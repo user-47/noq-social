@@ -2,7 +2,6 @@
   "brand": "NO-Q",
   "timezone": "America/Edmonton",
   "base_url": "https://noq-social.netlify.app",
-  "generated_at": "2026-11-11T06:59:38.445Z",
   "how_to": "Each post has absolute URLs for its Reel (primary), cover frame and stills. Schedule a post on or after schedule_from (Instagram's 30-day window), at date + time in the timezone above. Post the caption exactly as given.",
   "batches": [
     {

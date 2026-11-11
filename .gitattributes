@@ -3,3 +3,5 @@
 *.jpg binary
 *.mp4 binary
 *.zip binary
+# captions.csv keeps CRLF + BOM for Excel
+*.csv -text

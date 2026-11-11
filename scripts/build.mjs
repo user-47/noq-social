@@ -45,7 +45,7 @@ const batches = fs.readdirSync(path.join(ROOT, "data"))
     .map((f) => JSON.parse(fs.readFileSync(path.join(ROOT, "data", f), "utf8")))
     .sort((a, b) => b.batch - a.batch);
 
-const feed = { brand: config.brand, timezone: config.timezone, base_url: BASE, generated_at: new Date().toISOString(),
+const feed = { brand: config.brand, timezone: config.timezone, base_url: BASE,
     how_to: "Each post has absolute URLs for its Reel (primary), cover frame and stills. Schedule a post on or after schedule_from (Instagram's 30-day window), at date + time in the timezone above. Post the caption exactly as given.",
     batches: [] };
 
