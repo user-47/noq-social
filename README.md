@@ -1,8 +1,10 @@
 # NO-Q Social
 
+> **AI agents: start with [AGENTS.md](AGENTS.md).** It has the full playbook for making a new batch. Details are in [docs/](docs/): brand, production, strategy and delivery.
+
 NO-Q's Instagram content calendar, published as a static site on Netlify. Every Reel, cover and still has a permanent public URL, so people and tools (Muse) can download them in any browser.
 
-- **Site:** `https://noq-social.netlify.app` (set the real address in `site.config.json`)
+- **Site:** https://noq-social.netlify.app (address set in `site.config.json`)
 - **Feed for tools:** `/feed.json` lists every batch and post with absolute URLs
 - **Per batch:** `/batches/batch-N/plan.json` and `/batches/batch-N/captions.csv`
 
@@ -42,7 +44,10 @@ NO-Q's Instagram content calendar, published as a static site on Netlify. Every 
 ## Layout
 
 ```
+AGENTS.md        playbook for AI agents (CLAUDE.md imports it)
+docs/            brand.md, production.md, strategy.md, delivery.md
 data/            batch source data (captions, alt text, dates, trends)
+production/      render pipeline: stills and Reel kits, assets, per-batch scripts, screen capture
 scripts/         build.mjs
 site/            published by Netlify
   index.html     the calendar page (renders from feed.json)

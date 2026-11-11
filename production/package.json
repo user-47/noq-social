@@ -1,0 +1,10 @@
+{
+  "name": "noq-social-production",
+  "private": true,
+  "description": "Renders NO-Q Instagram stills and Reels into ../site/batches. See ../AGENTS.md.",
+  "dependencies": {
+    "playwright": "1.52.0",
+    "ffmpeg-static": "5.2.0",
+    "qrcode": "1.5.4"
+  }
+}
