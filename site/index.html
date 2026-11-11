@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>NO-Q Social Calendar</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23121212'/%3E%3Cpath d='M9 10l6 6-6 6M17 10l6 6-6 6' stroke='%23cef24e' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: a posting calendar. Three week bands; each post is a row of date | carousel strip | caption. */
+:root {
+  --ink: #121212; --panel: #1b1c18; --line: #2e3029; --text: #f2f4ec; --muted: #a9ad9f; --lime: #cef24e;
+  --display: 'Space Grotesk', 'Arial Black', Arial, sans-serif;
+  --body: Inter, 'Segoe UI', Arial, sans-serif;
+  color-scheme: dark;
+}
+body { background: var(--ink); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.5; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 40px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 48px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.02; letter-spacing: -1px; }
+h2 { font-size: 28px; }
+h3 { font-size: 22px; line-height: 1.2; }
+p { margin: 0; }
+.intro { display: flex; flex-direction: column; gap: 16px; }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--lime); }
+.lede { color: var(--muted); max-width: 70ch; font-size: 17px; }
+.facts { display: flex; flex-wrap: wrap; gap: 10px; }
+.fact { border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 14px; color: var(--text); }
+.fact b { color: var(--lime); font-weight: 600; }
+.week { display: flex; flex-direction: column; gap: 20px; }
+.week-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 20px; border-bottom: 1px solid var(--line); padding-bottom: 12px; }
+.week-head p { color: var(--muted); }
+.post { display: grid; grid-template-columns: 150px minmax(0, 1fr) minmax(0, 420px); gap: 24px; padding: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; }
+.when { display: flex; flex-direction: column; gap: 6px; }
+.day { font-family: var(--display); font-size: 30px; font-weight: 700; line-height: 1; }
+.date { color: var(--muted); font-size: 14px; }
+.chip { align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(206,242,78,.45); color: var(--lime); border-radius: 999px; padding: 3px 10px; margin-top: 6px; }
+.fmt { font-size: 13px; color: var(--muted); }
+.strip { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x mandatory; min-width: 0; }
+.media { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.reelrow { display: flex; gap: 16px; align-items: flex-start; }
+.reel { position: relative; flex: 0 0 auto; width: 190px; aspect-ratio: 9 / 16; padding: 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: #000; cursor: pointer; }
+.reel img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.reel .play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 56px; height: 56px; border-radius: 50%; background: var(--lime); display: grid; place-items: center; box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+.reel .play::before { content: ""; margin-left: 5px; border-left: 18px solid var(--ink); border-top: 11px solid transparent; border-bottom: 11px solid transparent; }
+.reel .len { position: absolute; right: 8px; bottom: 8px; font: 600 12px var(--body); background: rgba(0,0,0,.7); color: var(--text); border-radius: 6px; padding: 2px 6px; }
+.reel:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.reelnote { display: flex; flex-direction: column; gap: 8px; font-size: 14px; color: var(--muted); max-width: 30ch; }
+.strip button { flex: 0 0 auto; width: 120px; aspect-ratio: 4 / 5; padding: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #000; cursor: zoom-in; scroll-snap-align: start; }
+.strip button:focus-visible, .copy:focus-visible, .close:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.copyblock { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.caption { white-space: pre-line; font-size: 15px; line-height: 1.55; }
+.tags { color: var(--lime); font-size: 14px; word-break: break-word; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.copy { font: 600 14px var(--body); background: var(--lime); color: var(--ink); border: 0; border-radius: 999px; padding: 8px 16px; cursor: pointer; }
+.dl { font: 600 14px var(--body); background: transparent; color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 7px 16px; cursor: pointer; }
+.dl:hover { border-color: var(--lime); }
+.dl:disabled { opacity: .6; cursor: progress; }
+.dl:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.fallback { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: rgba(206,242,78,.05); }
+.fallback[hidden] { display: none; }
+.fb-note { flex-basis: 100%; font-size: 13px; color: var(--muted); }
+.fb-link { font: 600 13px var(--body); color: var(--lime); border: 1px solid rgba(206,242,78,.4); border-radius: 999px; padding: 6px 12px; text-decoration: none; }
+.fb-item { display: inline-flex; align-items: center; gap: 6px; }
+.fb-tab { font-size: 12px; color: var(--muted); }
+button.fb-link { background: transparent; cursor: pointer; }
+dialog [hidden] { display: none !important; }
+.vhint { margin-top: 8px; font-size: 13px; color: var(--muted); text-align: center; }
+.fb-link:hover { background: rgba(206,242,78,.12); }
+.fb-link:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.copied { font-size: 13px; color: var(--muted); }
+details { border-top: 1px solid var(--line); padding-top: 10px; }
+summary { cursor: pointer; font-size: 14px; color: var(--muted); }
+details ol { margin: 8px 0 0; padding-left: 20px; color: var(--muted); font-size: 14px; display: flex; flex-direction: column; gap: 4px; }
+.notes { display: flex; flex-direction: column; gap: 10px; color: var(--muted); font-size: 15px; border-top: 1px solid var(--line); padding-top: 24px; }
+.notes ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+dialog { border: 0; padding: 0; background: transparent; max-width: min(92vw, 560px); }
+dialog::backdrop { background: rgba(0,0,0,.85); }
+dialog img, dialog video { width: 100%; height: auto; border-radius: 12px; display: block; max-height: 86vh; object-fit: contain; background: #000; }
+.close { position: absolute; top: 8px; right: 8px; font: 600 14px var(--body); background: var(--ink); color: var(--text); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.getfiles { background: rgba(206,242,78,.08); border: 1px solid var(--lime); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.getfiles a.big { align-self: flex-start; font: 700 17px var(--body); background: var(--lime); color: var(--ink); border-radius: 999px; padding: 12px 22px; text-decoration: none; }
+.dl-pending { color: var(--muted); }
+.dl-ready { display: flex; flex-direction: column; gap: 10px; }
+.dl-alt { font-size: 14px; color: var(--muted); }
+.dl-alt a { color: var(--lime); }
+.durl { word-break: break-all; font-size: 12px; color: var(--text); }
+.tw { overflow-x: auto; }
+#manifest table { border-collapse: collapse; font-size: 13px; margin-top: 10px; min-width: 640px; }
+#manifest th, #manifest td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+#manifest code { font-size: 12px; color: var(--text); }
+.sched, .trends { display: flex; flex-direction: column; gap: 14px; }
+.sched { background: var(--panel); border: 1px solid rgba(206,242,78,.35); border-radius: 18px; padding: 24px; }
+.sched ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; max-width: 80ch; }
+.sched a, .srcs a { color: var(--lime); }
+.tgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.tcard { border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+.tcard h3 { font-size: 18px; }
+.tcard p { font-size: 14px; color: var(--muted); }
+.tcard .tuse { color: var(--lime); font-weight: 600; font-size: 13px; margin-top: auto; }
+.srcs { font-size: 13px; color: var(--muted); }
+.sfrom { font-size: 13px; color: var(--text); }
+.sfrom b { color: var(--lime); font-weight: 600; }
+.trend { font-size: 13px; color: var(--lime); }
+details.b1 { border-top: 1px solid var(--line); padding-top: 16px; }
+details.b1 > summary { list-style: none; cursor: pointer; color: var(--text); }
+details.b1 > summary::-webkit-details-marker { display: none; }
+details.b1 > summary h2 { display: inline; }
+details.b1 > summary::after { content: " · show"; color: var(--muted); font-size: 15px; }
+details.b1[open] > summary::after { content: " · hide"; }
+details.b1 #weeks { margin-top: 24px; }
+@media (max-width: 900px) {
+  .post { grid-template-columns: minmax(0, 1fr); }
+  .when { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 8px 12px; }
+}
+@media (prefers-reduced-motion: no-preference) { .strip { scroll-behavior: smooth; } }
+
+.batch { border-top: 1px solid var(--line); padding-top: 20px; }
+.batch > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+.batch > summary::-webkit-details-marker { display: none; }
+.batch > summary h2 { font-size: clamp(24px, 4vw, 32px); }
+.batch > summary::after { content: "show"; color: var(--muted); font-size: 14px; margin-left: auto; }
+.batch[open] > summary::after { content: "hide"; }
+.bstatus { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; border: 1px solid var(--line); color: var(--muted); }
+.bstatus.todo { border-color: rgba(206,242,78,.5); color: var(--lime); }
+.batchbody { display: flex; flex-direction: column; gap: 32px; margin-top: 20px; }
+#batches { display: flex; flex-direction: column; gap: 40px; }
+.week-head h3 { font-size: 24px; }
+.files .fb { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+a.copy, a.dl { display: inline-block; text-decoration: none; }
+a.dl { color: var(--text); }
+.trends > summary { font-family: var(--display); font-size: 20px; color: var(--text); }
+.trends .tgrid { margin-top: 12px; }
+.bnotes { margin: 0; padding-left: 20px; color: var(--muted); font-size: 15px; display: flex; flex-direction: column; gap: 6px; }
+.muse { margin: 0; padding-left: 20px; color: var(--muted); display: flex; flex-direction: column; gap: 6px; max-width: 80ch; }
+.getfiles code { color: var(--text); }
+.getfiles .row { align-items: center; }
+dialog [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="intro">
+    <p class="eyebrow">NO-Q · Instagram content</p>
+    <h1>Posting calendar</h1>
+    <p class="lede">Every batch of NO-Q Instagram posts, newest first. Each post leads with a Reel and keeps its 4:5 stills as an alternative. Every file has a permanent link, and every download button is a plain link that works in any browser.</p>
+    <div class="facts" id="facts"></div>
+  </section>
+
+  <section class="getfiles" aria-labelledby="muse-h">
+    <h2 id="muse-h">For Muse and other tools</h2>
+    <p>Start from the feed: it lists every batch and post with absolute URLs for the Reel, cover, stills, caption, alt text and the first day each post can be scheduled.</p>
+    <p class="row"><a class="big" id="feedLink" href="feed.json">feed.json</a><code class="durl" id="feedUrl"></code></p>
+    <ul class="muse">
+      <li>Schedule a post on or after <code>schedule_from</code> (Instagram allows 30 days ahead), at <code>date</code> + <code>time</code> in Mountain Time (Calgary).</li>
+      <li>Post the Reel from <code>reel.url</code> with the cover from <code>reel.cover_url</code>. Paste <code>caption</code> exactly. Add <code>alt_text</code>.</li>
+      <li>Each batch also has <code>plan.json</code> and <code>captions.csv</code> (links below). Files only change when a new batch is pushed.</li>
+    </ul>
+  </section>
+
+  <div id="batches"><p class="lede">Loading the calendar…</p></div>
+</div>
+
+<dialog id="viewer" aria-label="Preview">
+  <button class="close" type="button" id="close">Close</button>
+  <img id="viewerImg" alt="">
+  <video id="viewerVid" controls loop playsinline muted hidden></video>
+</dialog>
+
+<script>
+const el = (tag, attrs = {}, ...kids) => {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) k === "text" ? (n.textContent = v) : n.setAttribute(k, v);
+  kids.forEach((k) => k != null && k !== false && n.append(k));
+  return n;
+};
+const fmtDate = (iso) => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric" });
+const preview = (path) => path.replace("/full/", "/img/").replace(/\.png$/, ".jpg");
+const dl = (href, text, name, cls = "dl") => el("a", { class: cls, href, download: name, text });
+
+const viewer = document.getElementById("viewer"), vImg = document.getElementById("viewerImg"), vVid = document.getElementById("viewerVid");
+const openImage = (src, alt) => { vVid.pause(); vVid.hidden = true; vImg.hidden = false; vImg.src = src; vImg.alt = alt || ""; viewer.showModal(); };
+const openReel = (p) => { vImg.hidden = true; vVid.hidden = false; vVid.poster = p.reel.cover_path; vVid.src = p.reel.path; viewer.showModal(); vVid.play().catch(() => {}); };
+viewer.addEventListener("close", () => vVid.pause());
+document.getElementById("close").addEventListener("click", () => viewer.close());
+viewer.addEventListener("click", (e) => { if (e.target === viewer) viewer.close(); });
+
+const postCard = (p) => {
+  const strip = el("div", { class: "strip", "aria-label": `${p.format} images` });
+  p.stills.forEach((s, i) => {
+    const b = el("button", { type: "button", "aria-label": `Open image ${i + 1} of ${p.stills.length}` }, el("img", { src: preview(s.path), alt: p.alt_text[i] || "", loading: "lazy" }));
+    b.addEventListener("click", () => openImage(s.path, p.alt_text[i]));
+    strip.append(b);
+  });
+  const status = el("span", { class: "copied", "aria-live": "polite" });
+  const capId = `cap-${p.id}`;
+  const copy = el("button", { class: "copy", type: "button", text: "Copy caption" });
+  copy.addEventListener("click", () => {
+    navigator.clipboard.writeText(p.caption).then(() => (status.textContent = "Copied")).catch(() => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById(capId)); const s = getSelection(); s.removeAllRanges(); s.addRange(r); status.textContent = "Selected, press Ctrl+C";
+    });
+    setTimeout(() => (status.textContent = ""), 2500);
+  });
+  const reelBtn = el("button", { class: "reel", type: "button", "aria-label": `Play the ${fmtDate(p.date)} Reel` },
+    el("img", { src: p.reel.cover_path, alt: "", loading: "lazy" }), el("span", { class: "play" }), el("span", { class: "len", text: `0:${String(p.reel.seconds).padStart(2, "0")}` }));
+  reelBtn.addEventListener("click", () => openReel(p));
+  const stillLinks = p.stills.length > 1
+    ? [dl(p.stills_zip_url ? p.stills_zip_url.replace(/^https?:\/\/[^/]+\//, "") : "#", `Download ${p.stills.length} stills (.zip)`, `noq-${p.id}-stills.zip`)]
+    : [dl(p.stills[0].path, "Download still (.png)", `noq-${p.id}.png`)];
+  const files = el("details", { class: "files" }, el("summary", { text: "All files for this post" }),
+    el("div", { class: "fb" },
+      dl(p.reel.path, "Reel (.mp4)", `noq-${p.id}-reel.mp4`, "fb-link"),
+      dl(p.reel.cover_path, "Cover (.jpg)", `noq-${p.id}-cover.jpg`, "fb-link"),
+      ...p.stills.map((s, i) => dl(s.path, p.stills.length > 1 ? `Still ${i + 1} (.png)` : "Still (.png)", `noq-${p.id}${p.stills.length > 1 ? `-${i + 1}` : ""}.png`, "fb-link"))));
+  const alts = el("ol"); p.alt_text.forEach((a) => alts.append(el("li", { text: a })));
+  const [cap, tags] = (() => { const i = p.caption.lastIndexOf("\n\n"); return i > 0 ? [p.caption.slice(0, i), p.caption.slice(i + 2)] : [p.caption, ""]; })();
+  return el("article", { class: "post" },
+    el("div", { class: "when" },
+      el("span", { class: "day", text: p.day }), el("span", { class: "date", text: `${fmtDate(p.date)} · ${p.time}` }),
+      el("span", { class: "chip", text: p.audience }), el("span", { class: "fmt", text: p.format }),
+      el("span", { class: "sfrom" }, "Schedule from ", el("b", { text: fmtDate(p.schedule_from) })),
+      p.trend ? el("span", { class: "trend", text: `Trend: ${p.trend}` }) : null),
+    el("div", { class: "media" },
+      el("span", { class: "label", text: "Reel · 9:16" }),
+      el("div", { class: "reelrow" }, reelBtn, el("div", { class: "reelnote" }, el("p", { text: `${p.reel.seconds}-second motion version. Silent: add a sound from Instagram’s commercial library.${p.sound_suggestion ? ` Suggested: ${p.sound_suggestion.toLowerCase()}.` : ""}` }))),
+      el("span", { class: "label", text: p.stills.length > 1 ? `Stills · carousel of ${p.stills.length}` : "Still · 4:5" }), strip),
+    el("div", { class: "copyblock" },
+      el("div", { id: capId }, el("p", { class: "caption", text: cap }), el("p", { class: "tags", text: tags })),
+      el("div", { class: "row" }, copy, dl(p.reel.path, "Download Reel (.mp4)", `noq-${p.id}-reel.mp4`, "copy"), ...stillLinks, status),
+      files,
+      el("details", {}, el("summary", { text: "Alt text for each image" }), alts)));
+};
+
+const batchSection = (b, open) => {
+  const byId = Object.fromEntries(b.posts.map((p) => [p.id, p]));
+  const body = el("div", { class: "batchbody" });
+  body.append(el("p", { class: "lede", text: b.summary }),
+    el("p", { class: "row" }, el("a", { class: "dl", href: b.plan_url.replace(/^https?:\/\/[^/]+\//, ""), text: "plan.json" }), el("a", { class: "dl", href: b.captions_csv_url.replace(/^https?:\/\/[^/]+\//, ""), download: `noq-batch-${b.batch}-captions.csv`, text: "captions.csv" })));
+  if (b.trends.length) {
+    const grid = el("div", { class: "tgrid" }, ...b.trends.map((t) => el("div", { class: "tcard" }, el("h3", { text: t.name }), el("p", { text: t.why }), el("p", { class: "tuse", text: `Used in: ${t.used_in}` }))));
+    const src = el("p", { class: "srcs" }, `Sources: `);
+    b.sources.forEach((s, i) => { if (i) src.append(" · "); src.append(el("a", { href: s.url, target: "_blank", rel: "noopener", text: s.name })); });
+    if (b.sources_note) src.append(`. ${b.sources_note}`);
+    body.append(el("details", { class: "trends" }, el("summary", { text: "Trends this batch rides" }), grid, src));
+  }
+  if (b.notes.length) { const ul = el("ul", { class: "bnotes" }); b.notes.forEach((n) => ul.append(el("li", { text: n }))); body.append(ul); }
+  b.weeks.forEach((w) => {
+    const sec = el("section", { class: "week" }, el("div", { class: "week-head" }, el("h3", { text: w.title }), el("p", { text: w.sub })));
+    w.posts.forEach((id) => sec.append(postCard(byId[id])));
+    body.append(sec);
+  });
+  const d = el("details", { class: "batch", id: `batch-${b.batch}` },
+    el("summary", {}, el("h2", { text: b.title }), el("span", { class: `bstatus ${b.status === "scheduled" ? "done" : "todo"}`, text: `${b.dates} · ${b.status}` })), body);
+  if (open) d.open = true;
+  return d;
+};
+
+fetch("feed.json", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }).then((feed) => {
+  document.getElementById("feedUrl").textContent = new URL("feed.json", location.href).href;
+  const posts = feed.batches.reduce((n, b) => n + b.posts.length, 0);
+  document.getElementById("facts").append(
+    el("span", { class: "fact" }, el("b", { text: String(feed.batches.length) }), " batches"),
+    el("span", { class: "fact" }, el("b", { text: String(posts) }), " posts"),
+    el("span", { class: "fact", text: "Calgary · Mountain Time" }));
+  const root = document.getElementById("batches"); root.replaceChildren();
+  feed.batches.forEach((b, i) => root.append(batchSection(b, i === 0 || b.status !== "scheduled")));
+}).catch(() => { document.getElementById("batches").replaceChildren(el("p", { class: "lede", text: "Couldn’t load feed.json. Refresh the page." })); });
+</script>
+
+</body>
+</html>

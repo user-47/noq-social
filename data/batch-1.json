@@ -1,0 +1,189 @@
+{
+  "batch": 1,
+  "title": "Batch 1 · One round trip",
+  "dates": "Nov 16 – Dec 4, 2026",
+  "status": "scheduled",
+  "summary": "Nine posts that tell the NO-Q story to the three people it serves: guests, then vendors, then organizers.",
+  "base_tags": "#NOQ #SkipTheLine #EventTech #MobileOrdering",
+  "weeks": [
+    {
+      "title": "Week 1 · Guests",
+      "sub": "Skip the line: what NO-Q feels like from the crowd.",
+      "posts": [
+        {
+          "id": "w1-mon",
+          "day": "Mon",
+          "date": "Nov 16",
+          "time": "12:00 PM",
+          "audience": "Guests",
+          "format": "Single image",
+          "slides": 1,
+          "caption": "Lines are so last year.\n\nAt events running NO-Q, you scan a QR code, order from your phone, and pick up when your food is ready. No app to download. No line to stand in.\n\nLook for the NO-Q code on banners and tables at your next event.\n👉 no-q.ca",
+          "tags": "#FoodFestival #EventLife #YYC #Calgary",
+          "alt": [
+            "A phone showing a food vendor’s NO-Q menu, tilted over a photo of a busy outdoor festival, with the headline “Lines are so last year.”"
+          ],
+          "iso": "2026-11-16",
+          "reel": 9
+        },
+        {
+          "id": "w1-wed",
+          "day": "Wed",
+          "date": "Nov 18",
+          "time": "12:00 PM",
+          "audience": "Guests",
+          "format": "Carousel · 5",
+          "slides": 5,
+          "caption": "How to skip the line at your next event, in 4 steps:\n\n1️⃣ Scan the QR on a banner or table tent\n2️⃣ Pick your food from any vendor’s menu\n3️⃣ Pay on your phone\n4️⃣ Get your queue number and go enjoy the event\n\nWe’ll let you know when your order is ready. Save this for your next festival 📌",
+          "tags": "#FoodTrucks #FestivalSeason #YYC",
+          "alt": [
+            "Lime cover slide: “How to skip the line at your next event. 4 steps. No app to download.”",
+            "Step 1, scan the QR: a guest scans a “Skip the line” QR tent on a festival table.",
+            "Step 2, pick your food: an iPhone showing the Jerk Chicken Plate with an “Only 4 left” badge.",
+            "Step 3, pay on your phone: an iPhone showing the checkout contact form.",
+            "Step 4, get your number: an iPhone showing order IG-2047 with queue position 3."
+          ],
+          "iso": "2026-11-18",
+          "reel": 15
+        },
+        {
+          "id": "w1-fri",
+          "day": "Fri",
+          "date": "Nov 20",
+          "time": "12:00 PM",
+          "audience": "Guests",
+          "format": "Single image",
+          "slides": 1,
+          "caption": "No app. Just your camera. 📱\n\nPoint your phone at a NO-Q code and every vendor at the event opens right in your browser: menus, photos, live stock and card payment.\n\nTag the friend who always ends up holding the spot in line 👇",
+          "tags": "#FoodFestival #EventLife",
+          "alt": [
+            "Two iPhones side by side: one lists the vendors at Riverbend Night Market, the other shows Island Grill’s menu. Headline: “No app. Just your camera.”"
+          ],
+          "iso": "2026-11-20",
+          "reel": 9
+        }
+      ]
+    },
+    {
+      "title": "Week 2 · Vendors",
+      "sub": "Your booth, online: menu, live orders and stock that never oversells.",
+      "posts": [
+        {
+          "id": "w2-mon",
+          "day": "Mon",
+          "date": "Nov 23",
+          "time": "12:00 PM",
+          "audience": "Vendors",
+          "format": "Carousel · 4",
+          "slides": 4,
+          "caption": "Vendors, this one’s for you.\n\nNO-Q puts your menu on every phone at the event:\n\n1️⃣ Build your menu once: photos, prices, options and stock\n2️⃣ Print your own storefront QR for your booth\n3️⃣ Connect payouts through Stripe\n\nInvited to an event that uses NO-Q? Sign up through the organizer’s link. Questions? DM us or visit no-q.ca",
+          "tags": "#FoodVendor #SmallBusiness #FoodTruckLife",
+          "alt": [
+            "Lime cover slide: “Vendors: put your menu on every phone at the event”, over an iPhone Duo showing the NO-Q orders screen.",
+            "Step 1, build your menu once: an iPhone Duo showing the NO-Q menu editor with products, stock badges and inventory controls.",
+            "Step 2, get your own QR code: an iPhone Duo showing a vendor storefront page with a printable QR code.",
+            "Step 3, get paid through Stripe, with the call to action “Join your next event at no-q.ca”."
+          ],
+          "iso": "2026-11-23",
+          "reel": 13
+        },
+        {
+          "id": "w2-wed",
+          "day": "Wed",
+          "date": "Nov 25",
+          "time": "12:00 PM",
+          "audience": "Vendors",
+          "format": "Single image",
+          "slides": 1,
+          "caption": "Every order, live. ⚡\n\nOrders show up on your NO-Q dashboard as guests place them, with a new-order alert. Start it, mark it ready for pickup, mark it picked up. One tap each.\n\nAlready run a kitchen display or POS? Connect it and get NO-Q orders there instead.",
+          "tags": "#FoodVendor #KitchenLife #SmallBusiness",
+          "alt": [
+            "An unfolded iPhone Duo showing Island Grill’s NO-Q orders list, with new orders and Start Order and Complete Order buttons. Headline: “Every order, live.”"
+          ],
+          "iso": "2026-11-25",
+          "reel": 10
+        },
+        {
+          "id": "w2-fri",
+          "day": "Fri",
+          "date": "Nov 27",
+          "time": "12:00 PM",
+          "audience": "Vendors",
+          "format": "Carousel · 3",
+          "slides": 3,
+          "caption": "Nothing hurts like refunding a plate you already ran out of.\n\nSet your stock count in NO-Q and every sale counts it down. Sold a few at the window? Tap −.\n\nGuests see “Only 4 left” when you’re running low and “Sold out” when it’s gone, so you never sell what you don’t have.",
+          "tags": "#FoodVendor #InventoryManagement #SmallBusiness",
+          "alt": [
+            "Lime cover slide: “Never sell the plate you don’t have.” with two iPhones showing a menu and a product page.",
+            "An iPhone Duo showing the menu editor with a stock count of 4 and plus and minus buttons. Headline: “Set your count. We count down.”",
+            "Two iPhones showing an “Only 4 left” badge on the menu and on the product page. Headline: “Guests see it first.”"
+          ],
+          "iso": "2026-11-27",
+          "reel": 10
+        }
+      ]
+    },
+    {
+      "title": "Week 3 · Organizers",
+      "sub": "One link, every vendor, and the whole event’s results.",
+      "posts": [
+        {
+          "id": "w3-mon",
+          "day": "Mon",
+          "date": "Nov 30",
+          "time": "12:00 PM",
+          "audience": "Organizers",
+          "format": "Carousel · 4",
+          "slides": 4,
+          "caption": "Organizers: one link, every vendor.\n\n1️⃣ Create your event and get a printable event QR\n2️⃣ Send vendors one invite link and watch the roster fill\n3️⃣ Put the QR on banners and tables around the grounds\n\nPlanning a festival, market or game day? Let’s talk: no-q.ca",
+          "tags": "#EventPlanning #EventOrganizer #FestivalPlanning",
+          "alt": [
+            "Lime cover slide: “Organizers: one link, every vendor.” over an iPhone Duo showing the vendor roster.",
+            "Step 1, create the event: an iPhone Duo showing the organizer portal with the event QR code.",
+            "Step 2, send one invite link: an iPhone Duo showing the invite link and a roster of vendors marked Live or Draft.",
+            "Step 3, put the QR on the grounds: photos of a NO-Q roll-up banner and a “Skip the line” table tent."
+          ],
+          "iso": "2026-11-30",
+          "reel": 12
+        },
+        {
+          "id": "w3-wed",
+          "day": "Wed",
+          "date": "Dec 2",
+          "time": "12:00 PM",
+          "audience": "Organizers",
+          "format": "Single image",
+          "slides": 1,
+          "caption": "Know your busiest hour. 📊\n\nNO-Q’s event insights show organizers sales, orders, peak times and top items for every vendor, so you can plan staffing, layout and next year’s lineup with real numbers.\n\n(Figures shown are illustrative.)",
+          "tags": "#EventPlanning #EventOrganizer #EventData",
+          "alt": [
+            "An iPhone Duo showing NO-Q Event insights: totals for vendors, sales, orders and busiest period, a vendor performance table and a busy-hours chart. Labelled “Illustrative data.”"
+          ],
+          "iso": "2026-12-02",
+          "reel": 10
+        },
+        {
+          "id": "w3-fri",
+          "day": "Fri",
+          "date": "Dec 4",
+          "time": "12:00 PM",
+          "audience": "Everyone",
+          "format": "Carousel · 6",
+          "slides": 6,
+          "caption": "One event. One round trip. 🔁\n\nThe organizer creates the event → vendors join and build their menus → guests scan, order and pay → orders land on the vendor’s screen → the organizer sees it all.\n\nThat’s NO-Q. Bring it to your next event: no-q.ca",
+          "tags": "#EventPlanning #FoodVendor #FoodFestival",
+          "alt": [
+            "Lime cover slide: “One event. One round trip.” with an iPhone Duo showing event insights and an iPhone showing an order confirmation.",
+            "Step 1: the organizer creates the event. An iPhone Duo showing the event page and QR code.",
+            "Step 2: vendors join and build their menus. An iPhone Duo showing the vendor’s event invites.",
+            "Step 3: guests scan, order and pay. Two iPhones showing a menu and an order confirmation.",
+            "Step 4: orders land on the vendor’s screen. An iPhone Duo showing the live orders list.",
+            "Step 5: the organizer sees it all. An iPhone Duo showing event insights, with “Bring NO-Q to your next event · no-q.ca”."
+          ],
+          "iso": "2026-12-04",
+          "reel": 15
+        }
+      ]
+    }
+  ]
+}

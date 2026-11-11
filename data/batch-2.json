@@ -1,0 +1,282 @@
+{
+  "batch": 2,
+  "title": "Batch 2 · Winter markets to 2027",
+  "dates": "Dec 7 – Dec 30, 2026",
+  "status": "to schedule",
+  "summary": "Nine posts for December built on this season’s Instagram formats: winter-market moments, split screens, tiny-text POVs, rankings, saveable checklists and a year-end “Wrapped”. Set in a Calgary winter.",
+  "base_tags": "#NOQ #SkipTheLine #EventTech #MobileOrdering",
+  "trends": [
+    {
+      "name": "Holiday and winter-market season",
+      "why": "Holiday sounds took over Reels right after Halloween. Shoppers plan gifts and outings on social media through December.",
+      "used_in": "weeks 4–5, set at winter markets with snow and “−20°” jokes"
+    },
+    {
+      "name": "Split-screen comparisons",
+      "why": "“Two ways” and before/after splits are among the formats trackers list this month.",
+      "used_in": "Dec 7"
+    },
+    {
+      "name": "Tiny-text POV Reels",
+      "why": "Lo-fi, text-led, relatable Reels. One survey says half of users prefer unpolished Reels over highly produced ones.",
+      "used_in": "Dec 9"
+    },
+    {
+      "name": "Rankings and listicles",
+      "why": "“Ranking X, worst to best” gets comments because people argue with the order.",
+      "used_in": "Dec 11"
+    },
+    {
+      "name": "Saveable carousels",
+      "why": "Carousels lead on saves and shares. Since April 2026 Instagram favours original carousels and photos, not just Reels.",
+      "used_in": "Dec 14, Dec 21"
+    },
+    {
+      "name": "“Send this to…” hooks",
+      "why": "Shares and DM sends now weigh heavily in reaching people who don’t follow you.",
+      "used_in": "Dec 9, Dec 18"
+    },
+    {
+      "name": "Year-end “Wrapped” recaps",
+      "why": "Every December, brands copy the yearly-recap format. Bold stat cards, one number per slide.",
+      "used_in": "Dec 28"
+    },
+    {
+      "name": "New Year resolution memes",
+      "why": "“Realistic edition” resolution lists come back every year between Christmas and January 1.",
+      "used_in": "Dec 30"
+    }
+  ],
+  "sources": [
+    {
+      "name": "NapoleonCat",
+      "url": "https://napoleoncat.com/blog/instagram-reels-trends/"
+    },
+    {
+      "name": "Later",
+      "url": "https://later.com/blog/instagram-reels-trends/"
+    },
+    {
+      "name": "Postdom",
+      "url": "https://postdom.com/blog/instagram-trends"
+    },
+    {
+      "name": "SocialBee",
+      "url": "https://socialbee.com/blog/trending-instagram-songs-this-week/"
+    },
+    {
+      "name": "Pulse Advertising",
+      "url": "https://www.pulse-advertising.com/resources/social-media-news/instagram-algorithm-changes-2026/"
+    },
+    {
+      "name": "MWM",
+      "url": "https://mwm.ai/articles/instagram-algorithm-update-in-april-2026-prioritizes-original-content"
+    },
+    {
+      "name": "SocialPilot",
+      "url": "https://www.socialpilot.co/blog/instagram-reels-trends"
+    }
+  ],
+  "sources_note": "Trend data comes from third-party trackers (Nov 2026) and changes weekly.",
+  "notes": [
+    "The Dec 14 and Dec 16 posts show low-stock and sold-out features. Move them later if those aren’t live for vendors yet.",
+    "Wrapped figures are illustrative and labelled so on the images and in the caption."
+  ],
+  "weeks": [
+    {
+      "title": "Week 4 · Guests",
+      "sub": "Winter market season: warm hands, no lines.",
+      "posts": [
+        {
+          "id": "w4-mon",
+          "day": "Mon",
+          "date": "Dec 7",
+          "iso": "2026-12-07",
+          "time": "12:00 PM",
+          "audience": "Guests",
+          "format": "Single image",
+          "slides": 1,
+          "reel": 12,
+          "trend": "Split-screen “two ways” comparison",
+          "sound": "Upbeat holiday instrumental",
+          "caption": "Winter market, two ways. ❄️\n\nOption 1: 25 minutes in line at −18°.\nOption 2: scan the NO-Q code, order from the fire pit, and pick up when your number’s called.\n\nWe know which one your toes would pick. Look for NO-Q at your next winter market.\n👉 no-q.ca",
+          "tags": "#WinterMarket #YYC #Calgary #yycevents",
+          "alt": [
+            "Split comparison. Top card, “Without NO-Q”: a line of eleven people, −18°C, “25 minutes in line.” Bottom card, “With NO-Q”: “Order from the fire pit. Pick up when it’s ready,” with an iPhone showing an order confirmation."
+          ]
+        },
+        {
+          "id": "w4-wed",
+          "day": "Wed",
+          "date": "Dec 9",
+          "iso": "2026-12-09",
+          "time": "12:00 PM",
+          "audience": "Guests",
+          "format": "Single image",
+          "slides": 1,
+          "reel": 10,
+          "trend": "Tiny-text POV Reel",
+          "sound": "Soft lo-fi or cosy acoustic",
+          "caption": "pov: it’s −22° in calgary and your hot chocolate is ready before your fingers go numb ☕\n\nAt events running NO-Q you order from your phone and we tell you when it’s ready. Stay by the fire till then.\n\nSend this to whoever you’re dragging to the market this weekend.",
+          "tags": "#yyc #CalgaryWinter #HotChocolate #WinterMarket",
+          "alt": [
+            "Small lowercase text: “pov: it’s −22° in calgary and your hot chocolate is ready before your fingers go numb,” above an iPhone showing a NO-Q order confirmation and a lime “Ready ✓” sticker."
+          ]
+        },
+        {
+          "id": "w4-fri",
+          "day": "Fri",
+          "date": "Dec 11",
+          "iso": "2026-12-11",
+          "time": "12:00 PM",
+          "audience": "Guests",
+          "format": "Carousel · 5",
+          "slides": 5,
+          "reel": 14,
+          "trend": "Ranking / listicle format",
+          "sound": "Trending countdown or drumroll beat",
+          "caption": "Ranking winter market moves, worst to best 🥶➡️😎\n\n#4 Holding the spot in a 30-person line at −20°\n#3 Sending one friend to queue while everyone warms up\n#2 Giving up on mini donuts because the line’s too long\n#1 Scanning the QR, ordering from the fire pit, picking up when it’s ready\n\nWhich one are you? Be honest 👇",
+          "tags": "#WinterMarket #YYC #yyceats #ChristmasMarket",
+          "alt": [
+            "Lime cover: “Ranking winter market moves. From worst to best.”",
+            "#4: “Holding the spot in a 30-person line at −20°.” Verdict: “Frostbite. Still no food.”",
+            "#3: “Sending one friend to queue while everyone else warms up.” Verdict: “They will remember this.”",
+            "#2: “Giving up on mini donuts because the line’s too long.” Verdict: “Tragic.”",
+            "#1: “Scan the QR, order from the fire pit, pick up when it’s ready.” Verdict: “Elite.” An iPhone shows Island Grill’s NO-Q menu."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Week 5 · Vendors",
+      "sub": "The holiday rush: stock, QR and live orders sorted.",
+      "posts": [
+        {
+          "id": "w5-mon",
+          "day": "Mon",
+          "date": "Dec 14",
+          "iso": "2026-12-14",
+          "time": "12:00 PM",
+          "audience": "Vendors",
+          "format": "Carousel · 5",
+          "slides": 5,
+          "reel": 13,
+          "trend": "Saveable checklist carousel",
+          "sound": "Upbeat holiday instrumental",
+          "caption": "Holiday rush checklist for vendors ✅ Save this before your next winter market.\n\n1. Set stock counts for your bestsellers\n2. Turn on low-stock alerts, so guests see “Only 3 left”\n3. Print your table QR and tape it to the counter\n4. Keep live orders open, paid orders land there\n\nTag a vendor who’s doing markets this month.",
+          "tags": "#FoodVendor #SmallBusinessYYC #WinterMarket #VendorTips",
+          "alt": [
+            "Lime cover: “Holiday rush checklist for vendors. 4 things to set up before your next winter market. Save this one,” with four empty checkboxes.",
+            "Step 1, set stock counts for your bestsellers: an inventory card with Jerk Chicken Plate 42, Beef Patty 60 and Sorrel 35, each with minus and plus buttons.",
+            "Step 2, turn on low-stock alerts: Jerk Chicken Plate marked “Low · 3”, Beef Patty marked “Sold out”, Sorrel at 18.",
+            "Step 3, print your table QR: an iPhone Duo showing the vendor storefront with its QR code.",
+            "Step 4, keep live orders open: an iPhone Duo showing the vendor’s live orders list."
+          ]
+        },
+        {
+          "id": "w5-wed",
+          "day": "Wed",
+          "date": "Dec 16",
+          "iso": "2026-12-16",
+          "time": "12:00 PM",
+          "audience": "Vendors",
+          "format": "Single image",
+          "slides": 1,
+          "reel": 11,
+          "trend": "Satisfying countdown",
+          "sound": "Ticking clock or build-up beat",
+          "caption": "Stock that counts itself. 📉\n\nSet a count for each item. Every NO-Q sale ticks it down, guests see “Only a few left” near the end, and at zero it flips to Sold out on every phone.\n\nNo more taking money for food you don’t have.",
+          "tags": "#FoodVendor #FoodTruck #SmallBusinessYYC #Inventory",
+          "alt": [
+            "Headline “Stock that counts itself.” A large lime 4 reads “left · Jerk Chicken Plate”, next to an iPhone showing the Jerk Chicken Plate with an “Only 4 left” badge."
+          ]
+        },
+        {
+          "id": "w5-fri",
+          "day": "Fri",
+          "date": "Dec 18",
+          "iso": "2026-12-18",
+          "time": "12:00 PM",
+          "audience": "Vendors",
+          "format": "Single image",
+          "slides": 1,
+          "reel": 10,
+          "trend": "“Send this to…” share hook",
+          "sound": "Trending comedic or upbeat audio",
+          "caption": "Send this to a vendor who’s still counting cash at −20° 🥶💵\n\nWith NO-Q, guests pay by card on their phones, orders show up on your screen and payouts go through Stripe. The gloves stay on.\n\nVendors: join your next event at no-q.ca",
+          "tags": "#FoodVendor #yyc #WinterMarket #SmallBusiness",
+          "alt": [
+            "Headline “Send this to a vendor who’s still counting cash at −20°.” An iPhone Duo shows Island Grill’s live NO-Q orders list."
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Weeks 6–7 · Year-end",
+      "sub": "Wrap 2026, plan 2027. Organizers first, everyone last.",
+      "posts": [
+        {
+          "id": "w6-mon",
+          "day": "Mon",
+          "date": "Dec 21",
+          "iso": "2026-12-21",
+          "time": "12:00 PM",
+          "audience": "Organizers",
+          "format": "Carousel · 4",
+          "slides": 4,
+          "reel": 12,
+          "trend": "New-year planning carousel",
+          "sound": "Clean, confident instrumental",
+          "caption": "Planning a 2027 event? Start here. 🗓️\n\n1. Create your event and get one QR code for the whole site\n2. Invite your vendors, they build their own menus\n3. See every sale, peak hour and top vendor, live\n\nMarkets, festivals, night events: book a demo at no-q.ca",
+          "tags": "#EventPlanning #EventOrganizer #YYC #CalgaryEvents",
+          "alt": [
+            "Lime cover: “Planning a 2027 event? Start here. 3 steps to a line-free market, festival or night out.”",
+            "Step 1, create your event: an iPhone Duo showing the organizer’s event page with its QR code.",
+            "Step 2, invite your vendors: an iPhone Duo showing the vendor roster and invite link.",
+            "Step 3, see every sale: an iPhone Duo showing event insights, with “Book a demo · no-q.ca”."
+          ]
+        },
+        {
+          "id": "w7-mon",
+          "day": "Mon",
+          "date": "Dec 28",
+          "iso": "2026-12-28",
+          "time": "12:00 PM",
+          "audience": "Organizers",
+          "format": "Carousel · 5",
+          "slides": 5,
+          "reel": 13,
+          "trend": "Year-end “Wrapped” recap",
+          "sound": "Trending year-recap audio",
+          "caption": "2026 is a wrap. Here’s what an event looks like, wrapped. 🎁\n\n📦 1,026 orders from 18 vendors, none of them in a queue\n⏰ Busiest hour: 8 PM\n🏆 Top vendor: Island Grill, 312 orders\n\nEvery NO-Q event gives the organizer this recap live. Get yours in 2027: no-q.ca\n\n(Figures shown are illustrative.)",
+          "tags": "#EventPlanning #YearInReview #EventOrganizer #YYC",
+          "alt": [
+            "Dark cover: “2026 is a wrap. Your event, wrapped.” Labelled illustrative data.",
+            "Lime card: “Orders, no lines: 1,026 orders from 18 vendors. Not one of them in a queue.” Illustrative data.",
+            "Ice-blue card: “Busiest hour: 8 PM. 3,100 items in that hour alone.” Illustrative data.",
+            "Orange card: “Top vendor: Island Grill. $4,820.50 across 312 orders.” Illustrative data.",
+            "“Get your own recap in 2027,” with an iPhone Duo showing NO-Q event insights. Illustrative data."
+          ]
+        },
+        {
+          "id": "w7-wed",
+          "day": "Wed",
+          "date": "Dec 30",
+          "iso": "2026-12-30",
+          "time": "12:00 PM",
+          "audience": "Everyone",
+          "format": "Single image",
+          "slides": 1,
+          "reel": 10,
+          "trend": "New Year resolutions meme",
+          "sound": "Trending New Year audio",
+          "caption": "2027 resolutions, realistic edition 🎆\n\n☐ Drink more water\n☐ Go outside more\n☐ Finally learn to skate\n☑ Never wait in a food line again\n\nThe only one you’ll actually keep. See you at the next event 👋",
+          "tags": "#NewYearsResolution #2027 #YYC #EventLife",
+          "alt": [
+            "“2027 resolutions, realistic edition.” A checklist: drink more water, go outside more and finally learn to skate are unchecked; “Never wait in a food line again” is ticked in lime."
+          ]
+        }
+      ]
+    }
+  ]
+}
