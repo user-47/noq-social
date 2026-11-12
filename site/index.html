@@ -225,7 +225,7 @@ const postCard = (p) => {
       p.trend ? el("span", { class: "trend", text: `Trend: ${p.trend}` }) : null),
     el("div", { class: "media" },
       el("span", { class: "label", text: "Reel · 9:16" }),
-      el("div", { class: "reelrow" }, reelBtn, el("div", { class: "reelnote" }, el("p", { text: `${p.reel.seconds}-second motion version. Silent: add a sound from Instagram’s commercial library.${p.sound_suggestion ? ` Suggested: ${p.sound_suggestion.toLowerCase()}.` : ""}` }))),
+      el("div", { class: "reelrow" }, reelBtn, el("div", { class: "reelnote" }, el("p", { text: /^original soundtrack/i.test(p.sound_suggestion || "") ? `${p.reel.seconds}-second motion version with its own original soundtrack. Keep the Reel’s audio; don’t add an Instagram sound.` : `${p.reel.seconds}-second motion version. Silent: add a sound from Instagram’s commercial library.${p.sound_suggestion ? ` Suggested: ${p.sound_suggestion.toLowerCase()}.` : ""}` }))),
       el("span", { class: "label", text: p.stills.length > 1 ? `Stills · carousel of ${p.stills.length}` : "Still · 4:5" }), strip),
     el("div", { class: "copyblock" },
       el("div", { id: capId }, el("p", { class: "caption", text: cap }), el("p", { class: "tags", text: tags })),

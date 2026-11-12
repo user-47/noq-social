@@ -78,7 +78,9 @@ Muse reads `https://noq-social.netlify.app/feed.json`. For each post whose `sche
 1. Create a Reel from `reel.url`, with the cover from `reel.cover_url`.
 2. Paste `caption` exactly as written. It already includes hashtags.
 3. Add `alt_text`.
-4. Add a commercial-library sound matching `sound_suggestion`.
+4. Sound:
+   - If `sound_suggestion` starts with "Original soundtrack", the Reel already has its own audio. **Keep it, and don't add an Instagram sound.**
+   - Otherwise (batches 1 and 2), add a commercial-library sound that matches the suggestion.
 5. Schedule it at `date` + `time` in `America/Edmonton` (Mountain Time).
 
 Muse must not edit captions, prices or dates. It reports problems to the user instead.

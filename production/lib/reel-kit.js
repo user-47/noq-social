@@ -230,41 +230,56 @@ p,h1{margin:0}
 @keyframes light{from{background:#2a2c26;color:#a9ad9f;transform:scale(1)}50%{transform:scale(1.25)}to{background:#cef24e;color:#121212;transform:scale(1)}}
 `;
 
-const page = (body, dur) => `<html><head><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap"><style>${CSS}</style></head>
+// reel.css (optional) adds extra keyframes/rules for one Reel.
+const page = (body, dur, css = "") => `<html><head><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap"><style>${CSS}${css}</style></head>
 <body><div class="reel"><div class="glow" style="animation:drift ${dur}s linear 0s both"></div>${body}</div></body></html>`;
 
 // Steps every animation to each frame's exact time, then pipes JPEG frames into ffmpeg (H.264).
+// Optional reel fields (absent = silent Reel, unchanged output):
+//   poster: seconds  -> that settled frame is baked in as frame 0 (the thumbnail everywhere) and saved as <id>-cover.jpg
+//                       unless reel.cover is set. Frame count and audio sync stay the same.
+//   score:  {...}    -> lib/soundtrack.js options (dur is taken from the Reel). The WAV is written to
+//                       production/out/audio/<id>.wav and muxed in as AAC, loudness-normalised to -14 LUFS.
 const FPS = 30;
+const run = (args) => new Promise((res, rej) => { const p = spawn(ffmpeg, args, { stdio: ["ignore", "ignore", "inherit"] }); p.on("close", (c) => (c === 0 ? res() : rej(new Error("ffmpeg " + c)))); });
 async function render(browser, reel, outDir) {
     const pg = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
-    await pg.setContent(page(reel.body, reel.dur), { waitUntil: "networkidle" });
+    await pg.setContent(page(reel.body, reel.dur, reel.css), { waitUntil: "networkidle" });
     await pg.evaluate(async () => {
         await document.fonts.ready;
         await Promise.all([...document.images].map((i) => i.decode().catch(() => {})));
         document.getAnimations().forEach((a) => a.pause());
     });
     const file = path.join(outDir, `${reel.id}.mp4`);
-    const ff = spawn(ffmpeg, ["-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", String(FPS), "-i", "-", "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p", "-profile:v", "high", "-movflags", "+faststart", file]);
+    const videoOut = reel.score ? path.join(outDir, `${reel.id}.video-only.mp4`) : file;
+    const ff = spawn(ffmpeg, ["-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", String(FPS), "-i", "-", "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-pix_fmt", "yuv420p", "-profile:v", "high", "-movflags", "+faststart", videoOut]);
     const done = new Promise((res, rej) => ff.on("close", (c) => (c === 0 ? res() : rej(new Error("ffmpeg " + c)))));
     const frames = Math.round(reel.dur * FPS);
     const el = pg.locator(".reel");
+    const coverAt = reel.cover ?? reel.poster;
     for (let f = 0; f < frames; f++) {
-        const t = (f / FPS) * 1000;
+        const t = (f === 0 && reel.poster != null ? reel.poster : f / FPS) * 1000;
         await pg.evaluate((t) => document.getAnimations().forEach((a) => (a.currentTime = t)), t);
         const buf = await el.screenshot({ type: "jpeg", quality: 94 });
         if (!ff.stdin.write(buf)) await new Promise((r) => ff.stdin.once("drain", r));
-        if (reel.cover != null && f === Math.round(reel.cover * FPS)) fs.writeFileSync(path.join(outDir, `${reel.id}-cover.jpg`), buf);
+        if (coverAt != null && f === Math.round(coverAt * FPS)) fs.writeFileSync(path.join(outDir, `${reel.id}-cover.jpg`), buf);
     }
     ff.stdin.end();
     await done;
     await pg.close();
+    if (reel.score) {
+        const { writeScore } = require("./soundtrack");
+        const wav = writeScore({ ...reel.score, dur: reel.dur }, path.join(__dirname, "..", "out", "audio", `${reel.id}.wav`));
+        await run(["-y", "-loglevel", "error", "-i", videoOut, "-i", wav, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-af", "loudnorm=I=-14:TP=-1.5:LRA=11", "-ar", "48000", "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", file]);
+        fs.unlinkSync(videoOut);
+    }
     return file;
 }
 
 // Grab single frames for review: times in seconds.
 async function stills(browser, reel, times, outDir) {
     const pg = await browser.newPage({ viewport: { width: 1080, height: 1920 } });
-    await pg.setContent(page(reel.body, reel.dur), { waitUntil: "networkidle" });
+    await pg.setContent(page(reel.body, reel.dur, reel.css), { waitUntil: "networkidle" });
     await pg.evaluate(async () => { await document.fonts.ready; document.getAnimations().forEach((a) => a.pause()); });
     const files = [];
     for (const t of times) {
@@ -277,4 +292,4 @@ async function stills(browser, reel, times, outDir) {
     return files;
 }
 
-module.exports = { S, D, P, QR, LOGO, LOGO_TILE, iphone, duo, words, layer, anim, endCard, render, stills };
+module.exports = { S, D, P, QR, LOGO, LOGO_TILE, iphone, duo, words, layer, anim, endCard, render, stills, FPS };

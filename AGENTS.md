@@ -45,8 +45,12 @@ You render everything here, push to `main`, and Netlify publishes it at **https:
 4. **Write the data file**: copy `data/batch-2.json` to `data/batch-N.json` and fill it in. Field reference: `docs/delivery.md`.
 5. **Render the stills**: copy `production/batch-2/stills.js` to `production/batch-N/stills.js`, design the slides, then run `node batch-N/stills.js` from `production/`. Output: `site/batches/batch-N/full/`.
 6. **Render the Reels**: copy `production/batch-2/reels.js`, design the scenes, then:
-   - **Review first:** `node batch-N/reels.js <id> --stills=1.5,4,7`. Look at the frames in `production/out/review/`, fix anything, repeat.
+   - **Plan each Reel on a beat grid:** 120 BPM, so cuts fall on multiples of 0.5 s. Follow the hero creative rules in `docs/production.md` (hook in the first 2 s, show the real app, about 0.3 s per word to read).
+   - **Give every Reel a `score`:** an original soundtrack with sound effects on the beats. Set `poster` to the strongest settled frame. See "Hero videos and sound" in `docs/production.md`.
+   - **One of the 9 posts is the batch's hero video:** 18–22 s, built from `production/hero/noq-launch.js`.
+   - **Review first:** `node batch-N/reels.js <id> --stills=1.5,4,7`, including mid-transition frames. Look at the frames in `production/out/review/`, fix anything, repeat.
    - **Then render:** `node batch-N/reels.js all`. Output: `site/batches/batch-N/reels/<id>.mp4` and `<id>-cover.jpg`.
+   - **Check every soundtrack:** `node tools/audio-check.js <mp4>`. You can't listen, so read the waveform and spectrogram, and check loudness is about −14 LUFS. Ask the user to listen to the hero before publishing.
 7. **Make previews**: run `node tools/previews.js N` to create `site/batches/batch-N/img/*.jpg`.
 8. **Look at every still and cover**, for example with `node tools/montage.js out/sheet.png <files…>`. Check for:
    - overlaps
@@ -74,4 +78,6 @@ You render everything here, push to `main`, and Netlify publishes it at **https:
 - **Empty cover frames.** Pick a cover time where the headline is on screen. One Reel's cover was blank because the rows hadn't animated in yet.
 - **Counter overlap.** A counter built from absolutely positioned numbers needs a `min-width`, or the label next to it gets covered.
 - **Shell escaping.** Shell heredocs corrupted regexes and multi-line JS more than once. Write scripts to files and edit them with a file-editing tool.
+- **Muddy crossfades.** Cross-fading two busy screens makes a double exposure. Dip through dark, or take the old content out before the new comes in.
+- **Silent Reels.** Batches 1 and 2 shipped without audio. From batch 3, every Reel has an original `score`, and its `sound` field tells Muse to keep the Reel's own audio.
 - **Apple-only details.** The iPhone Duo's back is white glass with a two-lens camera plateau and **no screen**. The cover display (the other outer face) has a hole-punch camera. See `docs/production.md`.

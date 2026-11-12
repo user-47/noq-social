@@ -46,7 +46,7 @@ const batches = fs.readdirSync(path.join(ROOT, "data"))
     .sort((a, b) => b.batch - a.batch);
 
 const feed = { brand: config.brand, timezone: config.timezone, base_url: BASE,
-    how_to: "Each post has absolute URLs for its Reel (primary), cover frame and stills. Schedule a post on or after schedule_from (Instagram's 30-day window), at date + time in the timezone above. Post the caption exactly as given.",
+    how_to: "Each post has absolute URLs for its Reel (primary), cover frame and stills. Schedule a post on or after schedule_from (Instagram's 30-day window), at date + time in the timezone above. Post the caption exactly as given. If sound_suggestion starts with 'Original soundtrack', keep the Reel's own audio and do not add an Instagram sound.",
     batches: [] };
 
 for (const b of batches) {

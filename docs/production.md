@@ -22,9 +22,13 @@ production/
   assets/qr.svg     real, scannable QR pointing to https://no-q.ca
   lib/stills-kit.js 4:5 stills: brand tokens, screens (S, D, P), iphone(), duo(), frame(), h(), sub(), step(), renderStills()
   lib/reel-kit.js   Reels: iphone(), duo() with spin and unfold, words(), layer(), anim(), endCard(), render(), stills()
+                    (render() also takes reel.score for a soundtrack, reel.poster for frame 0, and reel.css for extra rules)
+  lib/soundtrack.js original music + SFX generator (pure Node), used through reel.score
+  hero/             hero video templates (noq-launch.js: the 20s launch video with soundtrack)
   batch-1/          stills.js and reels.js for batch 1 (Nov 16 – Dec 4, 2026)
   batch-2/          stills.js and reels.js for batch 2 (Dec 7 – 30, 2026); start new batches from these
-  tools/            previews.js (full PNG to 720×900 JPEG), montage.js (contact sheet for review)
+  tools/            previews.js (full PNG to 720×900 JPEG), montage.js (contact sheet for review),
+                    audio-check.js (loudness, streams, waveform and spectrogram picture of a scored video)
   capture/          story.js, story-data.js and story-api.js: re-capture app screens (see below)
   out/              review frames and captures (git-ignored)
 ```
@@ -104,6 +108,83 @@ So motion is frame-exact and repeatable. A Reel takes about 35–45 s to render.
 3. Fix anything you find and repeat.
 4. Render with `node batch-N/reels.js <id>`, or `all`.
 
+## Hero videos and sound (from `/brag-slim`)
+
+On Nov 12, 2026 we tested the open-source `/brag` skill (https://github.com/latent-spaces/brag, MIT). On Opus 5.5 it runs as `/brag-slim`: the model builds a short launch video itself, including an **original soundtrack**. We adopted two parts of it:
+
+1. **Sound for every Reel from batch 3 on.** Batches 1 and 2 are silent and stay that way, because they're already live.
+2. **One hero video per batch**, built with its creative rules.
+
+The engine is still ours. `/brag-slim` is a set of instructions, not software.
+
+### Adding a soundtrack to any Reel
+
+Give the Reel object a `score`, and optionally a `poster`:
+
+```js
+const reel = {
+  id: "w8-mon", dur: 12, cover: 3.4,
+  poster: 10.6,                 // optional: bake this settled frame in as frame 0 (the thumbnail everywhere)
+  score: {                      // lib/soundtrack.js options; dur comes from the Reel
+    bpm: 120,                   // beat 0.5s, bar 2s. Put every cut and animation start on this grid.
+    drop: 2.0,                  // full groove starts (put it on the first big reveal)
+    end: 10.5,                  // final chord hit (put it on the end card's logo pop)
+    sfx: [ { t: 2.0, kind: "impact" }, { t: 5.0, kind: "tap" }, { t: 6.5, kind: "ding" }, { t: 8.0, kind: "whoosh" } ],
+  },
+  body: `…`,
+};
+```
+
+- `render()` writes the video, then generates `out/audio/<id>.wav` and muxes it in as AAC 192k, loudness-normalised to **−14 LUFS** (true peak about −1 dBFS).
+- Without `score`, the output is exactly the silent file it always was. A batch 2 re-render was byte-identical.
+- **Music:** 120 BPM, with an A minor / C major progression (Am F C G by default; change it with `chords`). Before `drop`: a filtered pad and hats. After `drop`: kick on every beat, clap on 2 and 4, side-chained bass and pad, and a plucked arpeggio from `arpFrom`. At `end`: a C major hit, then a ring-out and fade.
+- **SFX kinds:** `tick` (counters), `tap` (UI taps), `click` (status changes), `chime` (success), `ding` (notification), `whoosh` (ends at `t`; put it on cuts), `riser` (from `t` for `len`), `impact` (the drop), `sweep` (things clearing away), `note` (a single pitched pluck).
+  - They're tuned to the key and share the music's echo, so they sit inside the track instead of on top of it.
+- **You can't listen, so check the audio as a picture.** Run `node tools/audio-check.js <file.mp4>`. It prints the duration, streams, loudness and true peak, and writes a waveform and spectrogram to `out/review/`. Confirm:
+  - the intro is quieter
+  - the drop lands where you put it
+  - kicks fall on the beats
+  - the final hit and ring-out are there
+  - loudness is about −14 LUFS
+- **Captions and Muse:** for a Reel with a soundtrack, set the data file's `sound` to `"Original soundtrack: keep the Reel's audio"`. Muse must not add an Instagram sound on top. See `docs/delivery.md`.
+
+### Hero video: one per batch
+
+The template is `production/hero/noq-launch.js`, a 20 s, 9:16 launch video: "You're #23 in line. Not anymore." → logo and site headline → guests → vendors → organizers → "Enjoy the event, not the line."
+
+```
+node hero/noq-launch.js --stills=1.2,2.6,4.5,9.5,12.6,14.7,19.3
+node hero/noq-launch.js
+node tools/audio-check.js out/hero/hero-noq-launch.mp4
+```
+
+It writes `out/hero/hero-noq-launch.mp4` and its cover. To publish a hero in a batch, copy the file into `production/batch-N/`, make it one of the batch's 9 posts (usually the first or last of the batch), point its output at `site/batches/batch-N/reels/`, and give it 1–2 key frames as stills.
+
+**Creative rules for heroes** (from `/brag-slim`; good for every Reel):
+- **Short:** 15–25 s, ideally 18–22.
+- **Shape:** hook (2–4 s) → reveal (2–3 s) → 2–3 sharp highlights → punchline and end card (2–4 s). A starting shape, not a template.
+- **The hook is everything.** Plan the first 2 seconds first. Give it a number, a tension or a question ("You're #23 in line.").
+- **Clear to a stranger.** After one viewing, someone should know what NO-Q is, who it's for and how to get it.
+- **Show the thing.** Use the real app screens doing their job, with taps, notifications and status changes. No abstract filler.
+- **Specific.** Use NO-Q's own website copy and claims. No generic SaaS lines ("streamline your workflow" is banned).
+- **Readable.** Keep the pace with motion and cuts, never by pulling text away early. A line stays fully visible for about 0.3 s per word after it has finished animating in.
+- **Every cut on a beat** (0.5 s at 120 BPM). Sound effects land on the same grid as the cuts.
+- **Transitions:**
+  - A plain crossfade between two busy layouts makes a muddy double exposure. Stagger it (old out, then new in) or dip through dark.
+  - The template's Duo swap dips to dark at 14.15–14.85 s and switches screens while dark.
+  - Review mid-transition frames, not just settled ones.
+- **Every frame postable.** Bake the strongest settled frame in as frame 0 with `poster`.
+- **Tones** to try:
+  - `default` (punchy, playful)
+  - `polished` (3–4 scenes, long holds)
+  - `yc-parody` (deadpan startup launch, hard cuts)
+  - `cinematic` (trailer-scale)
+  - `app-store` (clean feature cards)
+  - `deadpan`, `chaotic`
+- **Formats:** vertical 1080 × 1920 is our default. The same scenes can be laid out as square 1080 × 1080 (feed) or landscape 1920 × 1080 (LinkedIn, X, YouTube). That needs a second layout, because positions are absolute.
+
+**Licensing:** our soundtracks are synthesised from scratch in `lib/soundtrack.js`, so we own them and they need no credit. The full `/brag` (with Hyperframes) bundles tracks by Sascha Ende under CC BY 4.0. If you ever use those, every post must credit "Music: Sascha Ende, ende.app (CC BY 4.0)". We don't use them.
+
 ## Device reference
 
 - **iPhone 18 Pro:**
@@ -154,4 +235,4 @@ Then run `OUTDIR=social PHONE=402x820 DESK=1200x820 DESK_SCALE=2 node capture/st
 - **Rear face never visible:** if the spin overlaps the entry animation, you never see the back. Start the spin after the device has landed.
 - **Shell heredocs mangle regexes, backslashes and template literals.** Write scripts as files and edit them with a file-editing tool.
 - **`fetch()` doesn't work from `file://` pages.** Test the site through a local HTTP server.
-- **Business Instagram accounts can only use sounds from the commercial library.** Reels are exported silent; captions suggest a sound style, not a specific song.
+- **Business Instagram accounts can only use sounds from the commercial library.** Batches 1 and 2 were exported silent, with a suggested sound style. From batch 3, Reels carry their own original soundtrack (`score`), which avoids the library limits.

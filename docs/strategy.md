@@ -6,7 +6,13 @@
 - **Each post leads with a Reel.** Reels reach people who don't follow the account. The 4:5 stills, as a single image or a carousel, are the alternative. Carousels get the most saves and shares.
 - **Audience arc:** guests → vendors → organizers. Batch 1 did one audience per week; batch 2 did the same, plus a year-end week.
 - **Instagram schedules at most 30 days ahead.** `schedule_from` is the post date minus 29 days. Start a new batch when the previous batch's last post is about 3–4 weeks away, so Muse never has a gap.
-- **Sound:** Reels are silent. Each post suggests a style ("upbeat holiday instrumental"). Business accounts can only use Instagram's commercial sound library.
+- **Sound:**
+  - Batches 1 and 2 were silent, with a suggested style; business accounts can only use Instagram's commercial sound library.
+  - **From batch 3, every Reel has its own original soundtrack** (`score`, see `docs/production.md`), with sound effects on the beats, and Muse keeps that audio.
+  - It's ours, so it's never muted or blocked for licensing, and it gives NO-Q one consistent sound.
+- **Hero video:** one per batch, 18–22 s, following the creative rules in `docs/production.md` (from `/brag-slim`). Put it first or last in the batch.
+  - Good moments for a hero: a feature launch, the season's opening, a year-end recap.
+  - The first hero, "You're #23 in line. Not anymore.", is ready in `production/hero/noq-launch.js`. It's a strong opener for batch 3.
 - **Captions:**
   - The first line is the hook.
   - Short paragraphs, one call to action (`no-q.ca`, "save this", "send this to…", "tag a vendor").
