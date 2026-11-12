@@ -163,7 +163,7 @@ h1{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;line-height:1.02
 // Renders each slide at 1080x1350 CSS px, deviceScaleFactor 2 -> 2160x2700 PNG, into site/batches/batch-N/full/.
 // Carousel slides are <id>-1.png ... <id>-N.png; single images <id>.png. Pass a post id as the first CLI arg to render one post.
 async function renderStills(posts, batch, only = process.argv[2]) {
-    const out = path.join(__dirname, "..", "..", "site", "batches", `batch-${batch}`, "full");
+    const out = path.join(__dirname, "..", "..", "site", "batches", /^\d+$/.test(String(batch)) ? `batch-${batch}` : String(batch), "full");
     fs.mkdirSync(out, { recursive: true });
     const browser = await chromium.launch();
     const page = await browser.newPage({ viewport: { width: 1080, height: 1350 }, deviceScaleFactor: 2 });

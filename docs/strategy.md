@@ -68,6 +68,39 @@ Batch 1 was first published with #YEG/#Edmonton on Nov 16 and Nov 18; the user w
 
 There's no post on Christmas week. The Dec 14 and Dec 16 posts depend on inventory being live for vendors.
 
+## Special events (holidays), rolling
+
+The special-events batch lives in `production/special/holidays.js`. That one file holds the content and renders the stills, the Reels and `data/special-2026-27.json`. It publishes to `site/batches/special-2026-27/` and shows as the **Special events** tab.
+
+Muse schedules each post when its `schedule_from` date arrives, so the batch can hold a whole year. When the year runs out, copy the file to `special-2027-28`, roll the dates and refresh the copy.
+
+| Date (post) | Occasion | Audience | Format |
+|---|---|---|---|
+| Fri Dec 25, 2026 | Christmas Day | Everyone | Reel + still |
+| Fri Jan 1, 2027 | New Year's Day | Everyone | Reel + still |
+| Fri Feb 12, 2027 | Family Day weekend (Alberta, Mon Feb 15) | Guests | Reel + still |
+| Fri Mar 26, 2027 | Easter long weekend (Good Friday) | Everyone | Reel + still |
+| Fri May 21, 2027 | Victoria Day weekend (Mon May 24) | Vendors | Reel + still |
+| Tue Jun 15, 2027 | Canada Day lead-up | Organizers | Reel + still |
+| Thu Jul 1, 2027 | Canada Day | Everyone | Reel + still |
+| Fri Jul 30, 2027 | Heritage Day weekend (Alberta, Mon Aug 2) | Guests | Reel + still |
+| Mon Sep 6, 2027 | Labour Day | Everyone | Reel + still |
+| Thu Sep 30, 2027 | National Day for Truth and Reconciliation | Everyone | **Still only** |
+| Mon Oct 11, 2027 | Thanksgiving | Everyone | Reel + still |
+| Fri Oct 29, 2027 | Halloween weekend | Guests | Reel + still |
+| Thu Nov 11, 2027 | Remembrance Day | Everyone | **Still only** |
+
+**Rules for holiday posts:**
+- **Canada has no "Independence Day".** The national holiday is **Canada Day, July 1**. Federal statutory holidays are New Year's Day, Good Friday, Victoria Day, Canada Day, Labour Day, the National Day for Truth and Reconciliation, Thanksgiving, Remembrance Day and Christmas (plus Boxing Day and Easter Monday for federal workers). Alberta adds Family Day (third Monday in February) and Heritage Day (first Monday in August). Check every date with a calendar.
+- **Long weekends:** post on the Friday before, so the post is useful (plans, markets). Post on the day itself only for greetings (Canada Day, Christmas, New Year's).
+- **Solemn days get one quiet still**: Remembrance Day and the National Day for Truth and Reconciliation.
+  - No Reel, no music, no call to action, no product, no NO-Q hashtags (`no_base_tags: true`).
+  - Small, muted logo only.
+  - **No poppy:** the Royal Canadian Legion holds it as a trademark in Canada.
+  - **No "Every Child Matters" slogan or orange-shirt imagery:** the Orange Shirt Society holds the slogan. Use plain words, and point to the National Centre for Truth and Reconciliation (nctr.ca).
+- **Celebration posts** are about gratitude and the occasion first and NO-Q second. Product mentions stay light and true: "one QR code, every vendor". No discounts or offers unless the user confirms them.
+- **Cultural holidays** (Halloween) are fine for playful posts. Keep religious holidays (Easter) neutral, e.g. "Easter long weekend".
+
 ## Ideas for batch 3 (from Jan 4, 2027)
 
 Pick from these, after fresh trend research:

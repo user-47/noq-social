@@ -41,22 +41,24 @@ const abs = (rel) => `${BASE}/${rel.split("/").map(encodeURIComponent).join("/")
 const scheduleFrom = (iso) => { const d = new Date(iso + "T12:00:00Z"); d.setUTCDate(d.getUTCDate() - 29); return d.toISOString().slice(0, 10); };
 
 const batches = fs.readdirSync(path.join(ROOT, "data"))
-    .filter((f) => /^batch-\d+\.json$/.test(f))
+    .filter((f) => f.endsWith(".json"))
     .map((f) => JSON.parse(fs.readFileSync(path.join(ROOT, "data", f), "utf8")))
-    .sort((a, b) => b.batch - a.batch);
+    // Special-events batches first (rolling, year-round), then numbered batches newest first.
+    .sort((a, b) => (b.kind === "special") - (a.kind === "special") || (Number(b.batch) || 0) - (Number(a.batch) || 0));
 
 const feed = { brand: config.brand, timezone: config.timezone, base_url: BASE,
-    how_to: "Each post has absolute URLs for its Reel (primary), cover frame and stills. Schedule a post on or after schedule_from (Instagram's 30-day window), at date + time in the timezone above. Post the caption exactly as given. If sound_suggestion starts with 'Original soundtrack', keep the Reel's own audio and do not add an Instagram sound.",
+    how_to: "Each post has absolute URLs for its Reel (primary), cover frame and stills. If reel is null, the post is still-only: post the image (or carousel) from stills, with no sound. Schedule a post on or after schedule_from (Instagram's 30-day window), at date + time in the timezone above. Post the caption exactly as given. If sound_suggestion starts with 'Original soundtrack', keep the Reel's own audio and do not add an Instagram sound.",
     batches: [] };
 
 for (const b of batches) {
-    const dir = `batches/batch-${b.batch}`;
+    const dir = `batches/${b.folder ?? `batch-${b.batch}`}`;
     fs.mkdirSync(path.join(SITE, dir, "zips"), { recursive: true });
     const posts = [];
     const rows = [["date", "time", "schedule_from", "audience", "format", "reel_url", "cover_url", "stills_urls", "stills_zip_url", "sound_suggestion", "trend", "caption", "alt_text"]];
     for (const w of b.weeks) for (const p of w.posts) {
         const stillNames = Array.from({ length: p.slides }, (_, i) => (p.slides > 1 ? `${p.id}-${i + 1}` : p.id));
-        const reel = need(`${dir}/reels/${p.id}.mp4`), cover = need(`${dir}/reels/${p.id}-cover.jpg`);
+        // p.reel = Reel length in seconds; 0 or absent = still-only post (e.g. Remembrance Day).
+        const reel = p.reel ? need(`${dir}/reels/${p.id}.mp4`) : null, cover = p.reel ? need(`${dir}/reels/${p.id}-cover.jpg`) : null;
         const stills = stillNames.map((n) => need(`${dir}/full/${n}.png`));
         stillNames.forEach((n) => need(`${dir}/img/${n}.jpg`));
         let stillsZip = null;
@@ -64,21 +66,23 @@ for (const b of batches) {
             stillsZip = `${dir}/zips/${p.id}-stills.zip`;
             fs.writeFileSync(path.join(SITE, stillsZip), zip(stills.map((s, i) => ({ name: `noq-${p.id}-${i + 1}.png`, data: fs.readFileSync(path.join(SITE, s)) }))));
         }
-        const caption = `${p.caption}\n\n${b.base_tags} ${p.tags}`.trim();
+        // no_base_tags: solemn posts carry only their own, minimal tags.
+        const caption = `${p.caption}\n\n${p.no_base_tags ? "" : `${b.base_tags} `}${p.tags ?? ""}`.trim();
         const post = {
             id: p.id, batch: b.batch, week: w.title, day: p.day, date: p.iso, time: p.time, schedule_from: scheduleFrom(p.iso),
             audience: p.audience, format: p.format, trend: p.trend ?? null, sound_suggestion: p.sound ?? null,
-            reel: { url: abs(reel), path: reel, seconds: p.reel, cover_url: abs(cover), cover_path: cover },
+            occasion: p.occasion ?? null,
+            reel: reel ? { url: abs(reel), path: reel, seconds: p.reel, cover_url: abs(cover), cover_path: cover } : null,
             stills: stills.map((s) => ({ url: abs(s), path: s })), stills_zip_url: stillsZip ? abs(stillsZip) : null,
             caption, alt_text: p.alt,
         };
         posts.push(post);
-        rows.push([post.date, post.time, post.schedule_from, post.audience, post.format, post.reel.url, post.reel.cover_url, post.stills.map((s) => s.url).join(" | "), post.stills_zip_url, post.sound_suggestion, post.trend, caption, p.alt.join(" | ")]);
+        rows.push([post.date, post.time, post.schedule_from, post.audience, post.format, post.reel?.url ?? "", post.reel?.cover_url ?? "", post.stills.map((s) => s.url).join(" | "), post.stills_zip_url, post.sound_suggestion, post.trend, caption, p.alt.join(" | ")]);
     }
-    const plan = { batch: b.batch, title: b.title, dates: b.dates, status: b.status, brand: config.brand, timezone: config.timezone, plan_url: abs(`${dir}/plan.json`), posts };
+    const plan = { batch: b.batch, kind: b.kind ?? "batch", title: b.title, dates: b.dates, status: b.status, brand: config.brand, timezone: config.timezone, plan_url: abs(`${dir}/plan.json`), posts };
     fs.writeFileSync(path.join(SITE, dir, "plan.json"), JSON.stringify(plan, null, 2));
     fs.writeFileSync(path.join(SITE, dir, "captions.csv"), "﻿" + rows.map((r) => r.map(csvCell).join(",")).join("\r\n"));
-    feed.batches.push({ batch: b.batch, title: b.title, dates: b.dates, status: b.status, summary: b.summary, trends: b.trends ?? [], sources: b.sources ?? [], sources_note: b.sources_note ?? null, notes: b.notes ?? [],
+    feed.batches.push({ batch: b.batch, kind: b.kind ?? "batch", folder: b.folder ?? `batch-${b.batch}`, title: b.title, dates: b.dates, status: b.status, summary: b.summary, trends: b.trends ?? [], sources: b.sources ?? [], sources_note: b.sources_note ?? null, notes: b.notes ?? [],
         plan_url: plan.plan_url, captions_csv_url: abs(`${dir}/captions.csv`), weeks: b.weeks.map((w) => ({ title: w.title, sub: w.sub, posts: w.posts.map((p) => p.id) })), posts });
 }
 

@@ -1,0 +1,416 @@
+{
+  "batch": "special",
+  "kind": "special",
+  "title": "Special events · Holidays 2026–27",
+  "dates": "Dec 25, 2026 – Nov 11, 2027",
+  "status": "rolling",
+  "brand": "NO-Q",
+  "timezone": "America/Edmonton",
+  "plan_url": "https://noq-social.netlify.app/batches/special-2026-27/plan.json",
+  "posts": [
+    {
+      "id": "hol-christmas-2026",
+      "batch": "special",
+      "week": "Winter 2026–27",
+      "day": "Fri",
+      "date": "2026-12-25",
+      "time": "10:00 AM",
+      "schedule_from": "2026-11-26",
+      "audience": "Everyone",
+      "format": "Reel + single image",
+      "trend": "Holiday: Christmas Day",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Christmas Day",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-christmas-2026.mp4",
+        "path": "batches/special-2026-27/reels/hol-christmas-2026.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-christmas-2026-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-christmas-2026-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-christmas-2026.png",
+          "path": "batches/special-2026-27/full/hol-christmas-2026.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Merry Christmas from all of us at NO-Q 🎄\n\nTo every vendor who served in the cold, every organizer who built a winter market, and every guest who ordered from the fire pit instead of the line: thank you.\n\nSee you at the next event.\n\n#NOQ #SkipTheLine #EventTech #MerryChristmas #YYC #Calgary #ShopLocal",
+      "alt_text": [
+        "Merry Christmas: “Merry Christmas from NO-Q.” Thank you to every vendor who served in the cold, every organizer who built a winter market, and every guest who ordered from the fire pit."
+      ]
+    },
+    {
+      "id": "hol-new-year-2027",
+      "batch": "special",
+      "week": "Winter 2026–27",
+      "day": "Fri",
+      "date": "2027-01-01",
+      "time": "11:00 AM",
+      "schedule_from": "2026-12-03",
+      "audience": "Everyone",
+      "format": "Reel + single image",
+      "trend": "Holiday: New Year's Day",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "New Year's Day",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-new-year-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-new-year-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-new-year-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-new-year-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-new-year-2027.png",
+          "path": "batches/special-2026-27/full/hol-new-year-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Happy New Year from NO-Q 🎆\n\nHere’s to 2027: more festivals, markets and game days, and a lot less time in line.\n\nPlanning an event this year? Let’s talk: no-q.ca\n\n#NOQ #SkipTheLine #EventTech #HappyNewYear #2027 #YYC #EventPlanning",
+      "alt_text": [
+        "Happy New Year: “Happy 2027.” More festivals, markets and game days. A lot less time in line."
+      ]
+    },
+    {
+      "id": "hol-family-day-2027",
+      "batch": "special",
+      "week": "Winter 2026–27",
+      "day": "Fri",
+      "date": "2027-02-12",
+      "time": "12:00 PM",
+      "schedule_from": "2027-01-14",
+      "audience": "Guests",
+      "format": "Reel + single image",
+      "trend": "Holiday: Family Day (Alberta), Mon Feb 15",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Family Day (Alberta), Mon Feb 15",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-family-day-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-family-day-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-family-day-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-family-day-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-family-day-2027.png",
+          "path": "batches/special-2026-27/full/hol-family-day-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Family Day weekend is here 👨‍👩‍👧‍👦\n\nHeading to a market or event with the kids? If you see a NO-Q code, order from your table and pick up when it’s ready. Fewer minutes in line, fewer meltdowns (yours included).\n\nHappy Family Day, Alberta!\n\n#NOQ #SkipTheLine #EventTech #FamilyDay #FamilyDayAB #YYC #Calgary",
+      "alt_text": [
+        "Family Day weekend: “Family Day: snacks without the meltdown.” See a NO-Q code? Order from your table and pick up when it’s ready. A phone shows NO-Q’s event vendor list."
+      ]
+    },
+    {
+      "id": "hol-easter-2027",
+      "batch": "special",
+      "week": "Spring 2027",
+      "day": "Fri",
+      "date": "2027-03-26",
+      "time": "10:00 AM",
+      "schedule_from": "2027-02-25",
+      "audience": "Everyone",
+      "format": "Reel + single image",
+      "trend": "Holiday: Easter long weekend (Good Friday Mar 26)",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Easter long weekend (Good Friday Mar 26)",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-easter-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-easter-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-easter-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-easter-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-easter-2027.png",
+          "path": "batches/special-2026-27/full/hol-easter-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Happy Easter long weekend from NO-Q 🐣\n\nSpring markets are around the corner in Calgary, and so is the sunshine (eventually). Vendors: it’s a good weekend to get your menu ready for the season.\n\nno-q.ca\n\n#NOQ #SkipTheLine #EventTech #EasterLongWeekend #Spring #YYC #Calgary",
+      "alt_text": [
+        "Easter long weekend: “Happy Easter long weekend.” Spring markets are around the corner in Calgary. So is the sunshine (eventually)."
+      ]
+    },
+    {
+      "id": "hol-victoria-day-2027",
+      "batch": "special",
+      "week": "Spring 2027",
+      "day": "Fri",
+      "date": "2027-05-21",
+      "time": "12:00 PM",
+      "schedule_from": "2027-04-22",
+      "audience": "Vendors",
+      "format": "Reel + single image",
+      "trend": "Holiday: Victoria Day, Mon May 24",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Victoria Day, Mon May 24",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-victoria-day-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-victoria-day-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-victoria-day-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-victoria-day-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-victoria-day-2027.png",
+          "path": "batches/special-2026-27/full/hol-victoria-day-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "May long weekend means one thing in Calgary: market season is open 🌤️\n\nVendors, get set before the crowds:\n✅ Menu and photos up to date\n✅ Stock counts set for your bestsellers\n✅ Storefront QR printed for the table\n\nNew to NO-Q? Create a vendor account at no-q.ca\n\nHappy Victoria Day!\n\n#NOQ #SkipTheLine #EventTech #VictoriaDay #MayLongWeekend #FoodVendor #YYC",
+      "alt_text": [
+        "May long weekend: “May long weekend = market season.” Vendors: menu, stock counts and your storefront QR. Get set before the crowds. A phone shows NO-Q’s vendor storefront with its QR code."
+      ]
+    },
+    {
+      "id": "hol-canada-day-prep-2027",
+      "batch": "special",
+      "week": "Summer 2027",
+      "day": "Tue",
+      "date": "2027-06-15",
+      "time": "12:00 PM",
+      "schedule_from": "2027-05-17",
+      "audience": "Organizers",
+      "format": "Reel + single image",
+      "trend": "Holiday: Canada Day lead-up (Jul 1)",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Canada Day lead-up (Jul 1)",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-canada-day-prep-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-canada-day-prep-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-canada-day-prep-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-canada-day-prep-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-canada-day-prep-2027.png",
+          "path": "batches/special-2026-27/full/hol-canada-day-prep-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Canada Day crowds are coming 🇨🇦\n\nOrganizers: put one NO-Q code on the grounds and guests can order from every vendor at your event without the lineups.\n\nPlanning a July 1 event? Book a demo: no-q.ca\n\n#NOQ #SkipTheLine #EventTech #CanadaDay #EventPlanning #EventOrganizer #YYC",
+      "alt_text": [
+        "Canada Day is coming: “Canada Day crowds are coming.” Organizers: one QR code on the grounds, every vendor on every guest’s phone. A phone shows NO-Q’s event page with its QR code."
+      ]
+    },
+    {
+      "id": "hol-canada-day-2027",
+      "batch": "special",
+      "week": "Summer 2027",
+      "day": "Thu",
+      "date": "2027-07-01",
+      "time": "9:00 AM",
+      "schedule_from": "2027-06-02",
+      "audience": "Everyone",
+      "format": "Reel + single image",
+      "trend": "Holiday: Canada Day",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Canada Day",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-canada-day-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-canada-day-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-canada-day-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-canada-day-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-canada-day-2027.png",
+          "path": "batches/special-2026-27/full/hol-canada-day-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Happy Canada Day from NO-Q 🍁\n\nWherever you’re celebrating today, we hope you spend it with your people, on the grass, watching the fireworks. Not in a line.\n\n#NOQ #SkipTheLine #EventTech #CanadaDay #HappyCanadaDay #YYC #Calgary",
+      "alt_text": [
+        "Happy Canada Day: “Happy Canada Day.” Enjoy the fireworks, not the line. 🍁"
+      ]
+    },
+    {
+      "id": "hol-heritage-day-2027",
+      "batch": "special",
+      "week": "Summer 2027",
+      "day": "Fri",
+      "date": "2027-07-30",
+      "time": "12:00 PM",
+      "schedule_from": "2027-07-01",
+      "audience": "Guests",
+      "format": "Reel + single image",
+      "trend": "Holiday: Heritage Day (Alberta), Mon Aug 2",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Heritage Day (Alberta), Mon Aug 2",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-heritage-day-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-heritage-day-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-heritage-day-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-heritage-day-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-heritage-day-2027.png",
+          "path": "batches/special-2026-27/full/hol-heritage-day-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Alberta’s Heritage Day long weekend celebrates the cultures that make this province home, and a lot of that happens through food 🌍\n\nJollof, suya, jerk chicken, puff-puff: at events running NO-Q, one QR code opens every vendor’s menu. Try something new without losing your spot.\n\nHappy Heritage Day!\n\n#NOQ #SkipTheLine #EventTech #HeritageDay #Alberta #YYC #FoodFestival",
+      "alt_text": [
+        "Heritage Day weekend: “Heritage Day weekend: food from everywhere.” Jollof, suya, jerk chicken, puff-puff. One QR code, every vendor’s menu. A phone shows NO-Q’s event vendor list."
+      ]
+    },
+    {
+      "id": "hol-labour-day-2027",
+      "batch": "special",
+      "week": "Fall 2027",
+      "day": "Mon",
+      "date": "2027-09-06",
+      "time": "10:00 AM",
+      "schedule_from": "2027-08-08",
+      "audience": "Everyone",
+      "format": "Reel + single image",
+      "trend": "Holiday: Labour Day",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Labour Day",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-labour-day-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-labour-day-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-labour-day-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-labour-day-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-labour-day-2027.png",
+          "path": "batches/special-2026-27/full/hol-labour-day-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Happy Labour Day 🛠️\n\nEvery event runs on people: the cooks at the grill, the vendors who set up at dawn, the crews, the volunteers and the organizers who pull it all together. Today’s for you. Thank you.\n\n#NOQ #SkipTheLine #EventTech #LabourDay #LongWeekend #YYC",
+      "alt_text": [
+        "Happy Labour Day: “Happy Labour Day.” To the cooks, vendors, crews, volunteers and organizers who make every event happen. Thank you."
+      ]
+    },
+    {
+      "id": "hol-truth-reconciliation-2027",
+      "batch": "special",
+      "week": "Fall 2027",
+      "day": "Thu",
+      "date": "2027-09-30",
+      "time": "9:00 AM",
+      "schedule_from": "2027-09-01",
+      "audience": "Everyone",
+      "format": "Single image (no Reel)",
+      "trend": "Holiday: National Day for Truth and Reconciliation",
+      "sound_suggestion": "No sound",
+      "occasion": "National Day for Truth and Reconciliation",
+      "reel": null,
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-truth-reconciliation-2027.png",
+          "path": "batches/special-2026-27/full/hol-truth-reconciliation-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Today is the National Day for Truth and Reconciliation.\n\nWe honour the children who never returned home from residential schools, the Survivors, and their families and communities. We encourage everyone to take time today to listen and learn.\n\nNational Centre for Truth and Reconciliation: nctr.ca\n\n#NDTR #TruthAndReconciliation",
+      "alt_text": [
+        "September 30. “National Day for Truth and Reconciliation” Today we honour the children who never returned home from residential schools, the Survivors, and their families and communities. Small NO-Q logo at the bottom."
+      ]
+    },
+    {
+      "id": "hol-thanksgiving-2027",
+      "batch": "special",
+      "week": "Fall 2027",
+      "day": "Mon",
+      "date": "2027-10-11",
+      "time": "10:00 AM",
+      "schedule_from": "2027-09-12",
+      "audience": "Everyone",
+      "format": "Reel + single image",
+      "trend": "Holiday: Thanksgiving",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Thanksgiving",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-thanksgiving-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-thanksgiving-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-thanksgiving-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-thanksgiving-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-thanksgiving-2027.png",
+          "path": "batches/special-2026-27/full/hol-thanksgiving-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Happy Thanksgiving from NO-Q 🍂\n\nThis year we’re thankful for every vendor who trusted us with their orders, every organizer who brought us onto their grounds, and every guest who skipped a line with us. Enjoy the long weekend (and the leftovers).\n\n#NOQ #SkipTheLine #EventTech #HappyThanksgiving #Thanksgiving #YYC #Calgary",
+      "alt_text": [
+        "Happy Thanksgiving: “Happy Thanksgiving.” Thankful for every vendor, organizer and guest who skipped a line with us this year."
+      ]
+    },
+    {
+      "id": "hol-halloween-2027",
+      "batch": "special",
+      "week": "Fall 2027",
+      "day": "Fri",
+      "date": "2027-10-29",
+      "time": "12:00 PM",
+      "schedule_from": "2027-09-30",
+      "audience": "Guests",
+      "format": "Reel + single image",
+      "trend": "Holiday: Halloween (Sun Oct 31)",
+      "sound_suggestion": "Original soundtrack: keep the Reel's audio",
+      "occasion": "Halloween (Sun Oct 31)",
+      "reel": {
+        "url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-halloween-2027.mp4",
+        "path": "batches/special-2026-27/reels/hol-halloween-2027.mp4",
+        "seconds": 10,
+        "cover_url": "https://noq-social.netlify.app/batches/special-2026-27/reels/hol-halloween-2027-cover.jpg",
+        "cover_path": "batches/special-2026-27/reels/hol-halloween-2027-cover.jpg"
+      },
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-halloween-2027.png",
+          "path": "batches/special-2026-27/full/hol-halloween-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "The scariest thing at any festival isn’t the haunted house. It’s the food line 👻\n\nHeading to a Halloween event this weekend? Look for the NO-Q code, order from your phone, and pick up when it’s ready. No app. No ghosting your friends for 40 minutes.\n\n🎃 no-q.ca\n\n#NOQ #SkipTheLine #EventTech #Halloween #SpookySeason #YYC #Calgary",
+      "alt_text": [
+        "Spooky season: “The scariest thing at a festival? The line.” Look for the NO-Q code. Order from your phone, pick up when it’s ready. A phone shows NO-Q’s vendor menu."
+      ]
+    },
+    {
+      "id": "hol-remembrance-day-2027",
+      "batch": "special",
+      "week": "Fall 2027",
+      "day": "Thu",
+      "date": "2027-11-11",
+      "time": "9:00 AM",
+      "schedule_from": "2027-10-13",
+      "audience": "Everyone",
+      "format": "Single image (no Reel)",
+      "trend": "Holiday: Remembrance Day",
+      "sound_suggestion": "No sound",
+      "occasion": "Remembrance Day",
+      "reel": null,
+      "stills": [
+        {
+          "url": "https://noq-social.netlify.app/batches/special-2026-27/full/hol-remembrance-day-2027.png",
+          "path": "batches/special-2026-27/full/hol-remembrance-day-2027.png"
+        }
+      ],
+      "stills_zip_url": null,
+      "caption": "Today we remember those who served, and those who gave their lives in service to Canada.\n\nLest we forget.\n\n#RemembranceDay",
+      "alt_text": [
+        "November 11. “Lest we forget.” Today we remember those who served, and those who gave their lives in service to Canada. Small NO-Q logo at the bottom."
+      ]
+    }
+  ]
+}

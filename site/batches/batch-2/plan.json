@@ -1,5 +1,6 @@
 {
   "batch": 2,
+  "kind": "batch",
   "title": "Batch 2 · Winter markets to 2027",
   "dates": "Dec 7 – Dec 30, 2026",
   "status": "to schedule",
@@ -19,6 +20,7 @@
       "format": "Single image",
       "trend": "Split-screen “two ways” comparison",
       "sound_suggestion": "Upbeat holiday instrumental",
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-2/reels/w4-mon.mp4",
         "path": "batches/batch-2/reels/w4-mon.mp4",
@@ -50,6 +52,7 @@
       "format": "Single image",
       "trend": "Tiny-text POV Reel",
       "sound_suggestion": "Soft lo-fi or cosy acoustic",
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-2/reels/w4-wed.mp4",
         "path": "batches/batch-2/reels/w4-wed.mp4",
@@ -81,6 +84,7 @@
       "format": "Carousel · 5",
       "trend": "Ranking / listicle format",
       "sound_suggestion": "Trending countdown or drumroll beat",
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-2/reels/w4-fri.mp4",
         "path": "batches/batch-2/reels/w4-fri.mp4",
@@ -132,6 +136,7 @@
       "format": "Carousel · 5",
       "trend": "Saveable checklist carousel",
       "sound_suggestion": "Upbeat holiday instrumental",
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-2/reels/w5-mon.mp4",
         "path": "batches/batch-2/reels/w5-mon.mp4",
@@ -183,6 +188,7 @@
       "format": "Single image",
       "trend": "Satisfying countdown",
       "sound_suggestion": "Ticking clock or build-up beat",
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-2/reels/w5-wed.mp4",
         "path": "batches/batch-2/reels/w5-wed.mp4",
@@ -214,6 +220,7 @@
       "format": "Single image",
       "trend": "“Send this to…” share hook",
       "sound_suggestion": "Trending comedic or upbeat audio",
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-2/reels/w5-fri.mp4",
         "path": "batches/batch-2/reels/w5-fri.mp4",
@@ -245,6 +252,7 @@
       "format": "Carousel · 4",
       "trend": "New-year planning carousel",
       "sound_suggestion": "Clean, confident instrumental",
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-2/reels/w6-mon.mp4",
         "path": "batches/batch-2/reels/w6-mon.mp4",
@@ -291,6 +299,7 @@
       "format": "Carousel · 5",
       "trend": "Year-end “Wrapped” recap",
       "sound_suggestion": "Trending year-recap audio",
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-2/reels/w7-mon.mp4",
         "path": "batches/batch-2/reels/w7-mon.mp4",
@@ -342,6 +351,7 @@
       "format": "Single image",
       "trend": "New Year resolutions meme",
       "sound_suggestion": "Trending New Year audio",
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-2/reels/w7-wed.mp4",
         "path": "batches/batch-2/reels/w7-wed.mp4",

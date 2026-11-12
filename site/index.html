@@ -118,14 +118,20 @@ details.b1 #weeks { margin-top: 24px; }
 }
 @media (prefers-reduced-motion: no-preference) { .strip { scroll-behavior: smooth; } }
 
-.batch { border-top: 1px solid var(--line); padding-top: 20px; }
-.batch > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
-.batch > summary::-webkit-details-marker { display: none; }
-.batch > summary h2 { font-size: clamp(24px, 4vw, 32px); }
-.batch > summary::after { content: "show"; color: var(--muted); font-size: 14px; margin-left: auto; }
-.batch[open] > summary::after { content: "hide"; }
+.tabs { position: sticky; top: 0; z-index: 10; display: flex; gap: 8px; overflow-x: auto; padding: 12px 0; margin: -12px 0; background: var(--ink); border-bottom: 1px solid var(--line); scrollbar-width: thin; }
+.tab { flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; font: 600 16px var(--body); color: var(--muted); background: transparent; border: 1px solid var(--line); border-radius: 14px; padding: 10px 18px; cursor: pointer; }
+.tab .tname { font-family: var(--display); font-size: 18px; color: var(--text); }
+.tab .tmeta { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; }
+.tab .tmeta.todo { color: var(--lime); }
+.tab[aria-selected="true"] { background: var(--lime); border-color: var(--lime); }
+.tab[aria-selected="true"] .tname, .tab[aria-selected="true"] .tmeta { color: var(--ink); }
+.tab:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.batch[hidden] { display: none; }
+.bhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+.bhead h2 { font-size: clamp(24px, 4vw, 32px); }
 .bstatus { font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border-radius: 999px; padding: 3px 10px; border: 1px solid var(--line); color: var(--muted); }
 .bstatus.todo { border-color: rgba(206,242,78,.5); color: var(--lime); }
+.reelnote { color: var(--muted); font-size: 14px; }
 .batchbody { display: flex; flex-direction: column; gap: 32px; margin-top: 20px; }
 #batches { display: flex; flex-direction: column; gap: 40px; }
 .week-head h3 { font-size: 24px; }
@@ -146,9 +152,12 @@ dialog [hidden] { display: none !important; }
   <section class="intro">
     <p class="eyebrow">NO-Q · Instagram content</p>
     <h1>Posting calendar</h1>
-    <p class="lede">Every batch of NO-Q Instagram posts, newest first. Each post leads with a Reel and keeps its 4:5 stills as an alternative. Every file has a permanent link, and every download button is a plain link that works in any browser.</p>
+    <p class="lede">Every batch of NO-Q Instagram posts, one tab each, plus a Special events tab for holidays. Each post leads with a Reel and keeps its 4:5 stills as an alternative. Every file has a permanent link, and every download button is a plain link that works in any browser.</p>
     <div class="facts" id="facts"></div>
   </section>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Batches"></nav>
+  <div id="batches"><p class="lede">Loading the calendar…</p></div>
 
   <section class="getfiles" aria-labelledby="muse-h">
     <h2 id="muse-h">For Muse and other tools</h2>
@@ -157,11 +166,11 @@ dialog [hidden] { display: none !important; }
     <ul class="muse">
       <li>Schedule a post on or after <code>schedule_from</code> (Instagram allows 30 days ahead), at <code>date</code> + <code>time</code> in Mountain Time (Calgary).</li>
       <li>Post the Reel from <code>reel.url</code> with the cover from <code>reel.cover_url</code>. Paste <code>caption</code> exactly. Add <code>alt_text</code>.</li>
+      <li>If <code>reel</code> is <code>null</code> (quiet days like Remembrance Day), post the still as a single image, with no sound.</li>
+      <li>The <b>Special events</b> tab is rolling: holiday posts for the year ahead. Schedule each one when its <code>schedule_from</code> date arrives.</li>
       <li>Each batch also has <code>plan.json</code> and <code>captions.csv</code> (links below). Files only change when a new batch is pushed.</li>
     </ul>
   </section>
-
-  <div id="batches"><p class="lede">Loading the calendar…</p></div>
 </div>
 
 <dialog id="viewer" aria-label="Preview">
@@ -204,16 +213,20 @@ const postCard = (p) => {
     });
     setTimeout(() => (status.textContent = ""), 2500);
   });
-  const reelBtn = el("button", { class: "reel", type: "button", "aria-label": `Play the ${fmtDate(p.date)} Reel` },
-    el("img", { src: p.reel.cover_path, alt: "", loading: "lazy" }), el("span", { class: "play" }), el("span", { class: "len", text: `0:${String(p.reel.seconds).padStart(2, "0")}` }));
-  reelBtn.addEventListener("click", () => openReel(p));
+  // Still-only posts (reel === null), e.g. Remembrance Day: no player, no Reel download.
+  let reelBtn = null;
+  if (p.reel) {
+    reelBtn = el("button", { class: "reel", type: "button", "aria-label": `Play the ${fmtDate(p.date)} Reel` },
+      el("img", { src: p.reel.cover_path, alt: "", loading: "lazy" }), el("span", { class: "play" }), el("span", { class: "len", text: `0:${String(p.reel.seconds).padStart(2, "0")}` }));
+    reelBtn.addEventListener("click", () => openReel(p));
+  }
   const stillLinks = p.stills.length > 1
     ? [dl(p.stills_zip_url ? p.stills_zip_url.replace(/^https?:\/\/[^/]+\//, "") : "#", `Download ${p.stills.length} stills (.zip)`, `noq-${p.id}-stills.zip`)]
     : [dl(p.stills[0].path, "Download still (.png)", `noq-${p.id}.png`)];
   const files = el("details", { class: "files" }, el("summary", { text: "All files for this post" }),
     el("div", { class: "fb" },
-      dl(p.reel.path, "Reel (.mp4)", `noq-${p.id}-reel.mp4`, "fb-link"),
-      dl(p.reel.cover_path, "Cover (.jpg)", `noq-${p.id}-cover.jpg`, "fb-link"),
+      p.reel ? dl(p.reel.path, "Reel (.mp4)", `noq-${p.id}-reel.mp4`, "fb-link") : null,
+      p.reel ? dl(p.reel.cover_path, "Cover (.jpg)", `noq-${p.id}-cover.jpg`, "fb-link") : null,
       ...p.stills.map((s, i) => dl(s.path, p.stills.length > 1 ? `Still ${i + 1} (.png)` : "Still (.png)", `noq-${p.id}${p.stills.length > 1 ? `-${i + 1}` : ""}.png`, "fb-link"))));
   const alts = el("ol"); p.alt_text.forEach((a) => alts.append(el("li", { text: a })));
   const [cap, tags] = (() => { const i = p.caption.lastIndexOf("\n\n"); return i > 0 ? [p.caption.slice(0, i), p.caption.slice(i + 2)] : [p.caption, ""]; })();
@@ -224,12 +237,14 @@ const postCard = (p) => {
       el("span", { class: "sfrom" }, "Schedule from ", el("b", { text: fmtDate(p.schedule_from) })),
       p.trend ? el("span", { class: "trend", text: `Trend: ${p.trend}` }) : null),
     el("div", { class: "media" },
-      el("span", { class: "label", text: "Reel · 9:16" }),
-      el("div", { class: "reelrow" }, reelBtn, el("div", { class: "reelnote" }, el("p", { text: /^original soundtrack/i.test(p.sound_suggestion || "") ? `${p.reel.seconds}-second motion version with its own original soundtrack. Keep the Reel’s audio; don’t add an Instagram sound.` : `${p.reel.seconds}-second motion version. Silent: add a sound from Instagram’s commercial library.${p.sound_suggestion ? ` Suggested: ${p.sound_suggestion.toLowerCase()}.` : ""}` }))),
+      p.reel ? el("span", { class: "label", text: "Reel · 9:16" }) : el("span", { class: "label", text: "Still only · no Reel" }),
+      p.reel
+        ? el("div", { class: "reelrow" }, reelBtn, el("div", { class: "reelnote" }, el("p", { text: /^original soundtrack/i.test(p.sound_suggestion || "") ? `${p.reel.seconds}-second motion version with its own original soundtrack. Keep the Reel’s audio; don’t add an Instagram sound.` : `${p.reel.seconds}-second motion version. Silent: add a sound from Instagram’s commercial library.${p.sound_suggestion ? ` Suggested: ${p.sound_suggestion.toLowerCase()}.` : ""}` })))
+        : el("p", { class: "reelnote", text: "A quiet day: post this image as is, with no music and no promotion." }),
       el("span", { class: "label", text: p.stills.length > 1 ? `Stills · carousel of ${p.stills.length}` : "Still · 4:5" }), strip),
     el("div", { class: "copyblock" },
       el("div", { id: capId }, el("p", { class: "caption", text: cap }), el("p", { class: "tags", text: tags })),
-      el("div", { class: "row" }, copy, dl(p.reel.path, "Download Reel (.mp4)", `noq-${p.id}-reel.mp4`, "copy"), ...stillLinks, status),
+      el("div", { class: "row" }, copy, p.reel ? dl(p.reel.path, "Download Reel (.mp4)", `noq-${p.id}-reel.mp4`, "copy") : null, ...stillLinks, status),
       files,
       el("details", {}, el("summary", { text: "Alt text for each image" }), alts)));
 };
@@ -252,11 +267,38 @@ const batchSection = (b, open) => {
     w.posts.forEach((id) => sec.append(postCard(byId[id])));
     body.append(sec);
   });
-  const d = el("details", { class: "batch", id: `batch-${b.batch}` },
-    el("summary", {}, el("h2", { text: b.title }), el("span", { class: `bstatus ${b.status === "scheduled" ? "done" : "todo"}`, text: `${b.dates} · ${b.status}` })), body);
-  if (open) d.open = true;
-  return d;
+  return el("section", { class: "batch", id: `panel-${b.folder}`, role: "tabpanel", "aria-labelledby": `tab-${b.folder}` },
+    el("div", { class: "bhead" }, el("h2", { text: b.title }), el("span", { class: `bstatus ${b.status === "scheduled" ? "done" : "todo"}`, text: `${b.dates} · ${b.status}` })), body);
 };
+
+// Tabs across the top: one per batch. Default = the hash, else the first batch still to schedule, else the first.
+const tabLabel = (b) => (b.kind === "special" ? "Special events" : `Batch ${b.batch}`);
+function buildTabs(feed) {
+  const tabs = document.getElementById("tabs"), root = document.getElementById("batches");
+  tabs.replaceChildren(); root.replaceChildren();
+  const btns = [], panels = [];
+  feed.batches.forEach((b) => {
+    const panel = batchSection(b); panel.hidden = true; panels.push(panel); root.append(panel);
+    const btn = el("button", { class: "tab", type: "button", role: "tab", id: `tab-${b.folder}`, "aria-controls": `panel-${b.folder}`, "aria-selected": "false", tabindex: "-1" },
+      el("span", { class: "tname", text: tabLabel(b) }), el("span", { class: `tmeta ${b.status === "scheduled" ? "done" : "todo"}`, text: b.status }));
+    btns.push(btn); tabs.append(btn);
+  });
+  const select = (i, focus) => {
+    btns.forEach((t, k) => { const on = k === i; t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1; panels[k].hidden = !on; });
+    if (focus) btns[i].focus();
+    history.replaceState(null, "", `#${feed.batches[i].folder}`);
+  };
+  btns.forEach((t, i) => {
+    t.addEventListener("click", () => select(i));
+    t.addEventListener("keydown", (e) => {
+      const k = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: btns.length - 1 }[e.key];
+      if (k != null) { e.preventDefault(); select((k + btns.length) % btns.length, true); }
+    });
+  });
+  const fromHash = feed.batches.findIndex((b) => `#${b.folder}` === location.hash);
+  const todo = feed.batches.findIndex((b) => b.status === "to schedule");
+  select(fromHash >= 0 ? fromHash : todo >= 0 ? todo : 0);
+}
 
 fetch("feed.json", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }).then((feed) => {
   document.getElementById("feedUrl").textContent = new URL("feed.json", location.href).href;
@@ -265,8 +307,7 @@ fetch("feed.json", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Err
     el("span", { class: "fact" }, el("b", { text: String(feed.batches.length) }), " batches"),
     el("span", { class: "fact" }, el("b", { text: String(posts) }), " posts"),
     el("span", { class: "fact", text: "Calgary · Mountain Time" }));
-  const root = document.getElementById("batches"); root.replaceChildren();
-  feed.batches.forEach((b, i) => root.append(batchSection(b, i === 0 || b.status !== "scheduled")));
+  buildTabs(feed);
 }).catch(() => { document.getElementById("batches").replaceChildren(el("p", { class: "lede", text: "Couldn’t load feed.json. Refresh the page." })); });
 </script>
 

@@ -1,5 +1,6 @@
 {
   "batch": 1,
+  "kind": "batch",
   "title": "Batch 1 · One round trip",
   "dates": "Nov 16 – Dec 4, 2026",
   "status": "scheduled",
@@ -19,6 +20,7 @@
       "format": "Single image",
       "trend": null,
       "sound_suggestion": null,
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-1/reels/w1-mon.mp4",
         "path": "batches/batch-1/reels/w1-mon.mp4",
@@ -50,6 +52,7 @@
       "format": "Carousel · 5",
       "trend": null,
       "sound_suggestion": null,
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-1/reels/w1-wed.mp4",
         "path": "batches/batch-1/reels/w1-wed.mp4",
@@ -101,6 +104,7 @@
       "format": "Single image",
       "trend": null,
       "sound_suggestion": null,
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-1/reels/w1-fri.mp4",
         "path": "batches/batch-1/reels/w1-fri.mp4",
@@ -132,6 +136,7 @@
       "format": "Carousel · 4",
       "trend": null,
       "sound_suggestion": null,
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-1/reels/w2-mon.mp4",
         "path": "batches/batch-1/reels/w2-mon.mp4",
@@ -178,6 +183,7 @@
       "format": "Single image",
       "trend": null,
       "sound_suggestion": null,
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-1/reels/w2-wed.mp4",
         "path": "batches/batch-1/reels/w2-wed.mp4",
@@ -209,6 +215,7 @@
       "format": "Carousel · 3",
       "trend": null,
       "sound_suggestion": null,
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-1/reels/w2-fri.mp4",
         "path": "batches/batch-1/reels/w2-fri.mp4",
@@ -250,6 +257,7 @@
       "format": "Carousel · 4",
       "trend": null,
       "sound_suggestion": null,
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-1/reels/w3-mon.mp4",
         "path": "batches/batch-1/reels/w3-mon.mp4",
@@ -296,6 +304,7 @@
       "format": "Single image",
       "trend": null,
       "sound_suggestion": null,
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-1/reels/w3-wed.mp4",
         "path": "batches/batch-1/reels/w3-wed.mp4",
@@ -327,6 +336,7 @@
       "format": "Carousel · 6",
       "trend": null,
       "sound_suggestion": null,
+      "occasion": null,
       "reel": {
         "url": "https://noq-social.netlify.app/batches/batch-1/reels/w3-fri.mp4",
         "path": "batches/batch-1/reels/w3-fri.mp4",

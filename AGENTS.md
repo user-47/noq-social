@@ -66,6 +66,17 @@ You render everything here, push to `main`, and Netlify publishes it at **https:
     - One Reel downloads byte-identical to your local file.
 13. **Tell the user** the batch is live, and give them a short message for Muse: the dates, the first `schedule_from`, and anything to confirm.
 
+## Special events (holidays)
+
+Besides the numbered batches, there's a rolling **Special events** batch for Christmas and Canadian and Alberta holidays: `production/special/holidays.js`.
+- Edit the content there, then run, from `production/`:
+  - `node special/holidays.js data`
+  - `node special/holidays.js stills`
+  - `node special/holidays.js reels`
+  - `node tools/previews.js special-2026-27`
+- Then build and push as usual.
+- Solemn days (Remembrance Day, Truth and Reconciliation) are still-only and quiet. Read the holiday rules in `docs/strategy.md` before adding or changing any holiday post.
+
 ## Things that went wrong before (don't repeat them)
 
 - **Delivering files through Claude artifacts.**

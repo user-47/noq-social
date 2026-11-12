@@ -1,9 +1,9 @@
-// Makes the 720x900 JPEG previews the site uses: site/batches/batch-N/full/*.png -> img/*.jpg.  node tools/previews.js <N>
+// Makes the 720x900 JPEG previews the site uses: site/batches/batch-N/full/*.png -> img/*.jpg.  node tools/previews.js <N or folder name, e.g. special-2026-27>
 const { chromium } = require("playwright");
 const fs = require("fs"), path = require("path");
 const n = process.argv[2];
-if (!n) throw new Error("usage: node tools/previews.js <batch number>");
-const dir = path.join(__dirname, "..", "..", "site", "batches", `batch-${n}`), src = path.join(dir, "full"), out = path.join(dir, "img");
+if (!n) throw new Error("usage: node tools/previews.js <batch number or folder name>");
+const dir = path.join(__dirname, "..", "..", "site", "batches", /^\d+$/.test(n) ? `batch-${n}` : n), src = path.join(dir, "full"), out = path.join(dir, "img");
 (async () => {
     fs.mkdirSync(out, { recursive: true });
     const b = await chromium.launch();
