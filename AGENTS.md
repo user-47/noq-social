@@ -18,6 +18,8 @@ You render everything here, push to `main`, and Netlify publishes it at **https:
 
 ---
 
+**Design system and brand bible:** https://claude.ai/artifact/RJDHQyRQyCH5ruC3Gfpfqr (tokens, voice, social, print, product facts, demo world, live components). Read its `project/README.md` before designing anything new. If it and `docs/brand.md` disagree, ask the user.
+
 ## Hard rules (never break these)
 
 1. **Never touch NO-Q's product codebases.** They're read-only references. All work happens in this repo.
