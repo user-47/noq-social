@@ -34,6 +34,7 @@ You render everything here, push to `main`, and Netlify publishes it at **https:
 6. **No Apple logo** on device mockups.
 7. **Canadian English**, "organizer" spelling, typographic apostrophes (’), plain words, no hype.
 8. **Demo data never touches a real backend.** Screen capture mocks every API call.
+9. **Colours come from tokens.** Render scripts get colours with `color("name")` from `production/lib/tokens.js` (it reads `brand/tokens.json`, a mirror of the design system's tokens). Never type a brand hex into a script. To change a colour, change it in the design system, then copy its `tokens.json` to `brand/tokens.json`.
 
 ## Make a new batch: checklist
 

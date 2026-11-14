@@ -45,6 +45,8 @@ Don't claim anything else, such as a native app, loyalty points or offline mode,
 
 ## Brand system
 
+> **The NO-Q Design System is the source of truth** for colours, type, spacing, components, voice and print: https://claude.ai/artifact/RJDHQyRQyCH5ruC3Gfpfqr. Its tokens are mirrored in `brand/tokens.json`, and render scripts read them through `production/lib/tokens.js` (`color("social-panel")`, `color("ink", "light")`). Never type a brand hex into a script. The summary below is for quick reference.
+
 - **Colours:**
 
   | Role | Value |
@@ -55,7 +57,7 @@ Don't claim anything else, such as a native app, loyalty points or offline mode,
   | Text | `#f2f4ec` |
   | Muted | `#a9ad9f` |
   | **NO-Q lime** (accent and calls to action) | `#cef24e`, always with dark text on lime |
-  | Low-stock amber | `#f59e0b` (dark text) or `#ffd166` (on dark) |
+  | Low-stock amber | `warning` `#f59e0b` as a fill with `on-lime` (#121212) text, like the real app. Batches 1–2 used `#ffd166` text on a dark tint; don't reuse that. |
   | Sold-out red | `#ff8a80` on `#3a1d1d` |
   | Winter accent (batch 2 temperature chips and cards) | Ice blue `#bfe3ff` |
 

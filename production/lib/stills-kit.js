@@ -19,7 +19,9 @@ const LOGO_LIGHT = uri(path.join(LOGOS, "NO-QLogo-new.svg"));
 const LOGO_TILE = uri(path.join(LOGOS, "NO-Q-Logo-Obsidian.png"));
 
 // ---------- brand ----------
-const C = { ink: "#121212", ink2: "#1a1b17", line: "#2e3029", text: "#f2f4ec", muted: "#a9ad9f", lime: "#cef24e" };
+// Social palette from the NO-Q Design System (brand/tokens.json).
+const { color } = require("./tokens");
+const C = { ink: color("social-ink"), ink2: color("social-panel"), line: color("social-line"), text: color("social-text"), muted: color("social-muted"), lime: color("lime"), lime2: color("lime-hover"), onLime: color("on-lime"), warning: color("warning"), soldOut: color("sold-out"), soldOutBg: color("sold-out-bg") };
 
 // ---------- iOS status bar ----------
 const statusIcons = (color) => `

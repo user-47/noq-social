@@ -32,7 +32,7 @@ const chevrons = (w, a, b, op = 1) =>
 
 const front = (p) => `
 <div class="side front">
-  <div class="chev">${chevrons(230, C.lime, "#b8d945", 0.13)}</div>
+  <div class="chev">${chevrons(230, C.lime, C.lime2, 0.13)}</div>
   <img class="logo" src="${LOGO_LIGHT}" alt="NO-Q">
   <div class="who">
     <div class="name ${p.company ? "co" : ""}">${p.company ? "Lines are so last year." : p.name}</div>

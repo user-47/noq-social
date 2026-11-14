@@ -14,7 +14,7 @@ const { C, LOGO_LIGHT, LOGO_TILE } = require("../lib/stills-kit");
 const OUT = path.join(__dirname, "..", "..", "site", "kit", "commentary");
 
 // The logo's chevron pair, reused as a quote mark and bullet.
-const chevrons = (w, a = C.lime, b = "#b8d945") =>
+const chevrons = (w, a = C.lime, b = C.lime2) =>
     `<svg width="${w}" height="${(w * 21.5) / 21.2}" viewBox="0 0 21.2 21.5" aria-hidden="true"><path d="M6.5 10.2L0 0h4.6l6.5 10.2L4.6 21.5H0z" fill="${a}"/><path d="M16.6 10.2L10.1 0h4.6l6.5 10.2-6.5 11.3h-4.6z" fill="${b}"/></svg>`;
 
 const shell = ({ body, label, lime = false, foot = "no-q.ca" }) => `
@@ -44,7 +44,7 @@ const T = {
             lime: true,
             label: "Worth saying",
             body: `
-      <div class="qmark">${chevrons(120, C.ink, "#3a3d33")}</div>
+      <div class="qmark">${chevrons(120, C.ink, C.ink)}</div>
       <h1 class="quote">${quote}</h1>
       <p class="by"><b>${by}</b>${role ? `<span>${role}</span>` : ""}</p>`,
         }),
@@ -65,7 +65,7 @@ const T = {
         <div><b>${asker}</b><p>${comment}</p></div>
       </div>
       <div class="answer">
-        <span class="avatar me">${chevrons(34, C.ink, "#3a3d33")}</span>
+        <span class="avatar me">${chevrons(34, C.ink, C.ink)}</span>
         <div><b>NO-Q</b><h1>${answer}</h1>${more ? `<p>${more}</p>` : ""}</div>
       </div>`,
         }),
@@ -174,24 +174,24 @@ h1 em{font-style:normal;color:${C.lime}}
 .mf{border-radius:32px;padding:44px 48px;position:relative}
 .mf .k{display:inline-block;font:700 22px Inter,sans-serif;letter-spacing:2px;text-transform:uppercase;border-radius:999px;padding:8px 18px;margin-bottom:22px}
 .mf p{font:700 52px/1.1 'Space Grotesk',sans-serif;letter-spacing:-1.2px;text-wrap:balance}
-.myth{background:#1b1c18;border:2px solid #2e3029;margin-bottom:28px}
-.myth .k{background:#3a1d1d;color:#ff8a80}
-.myth p{color:${C.muted};text-decoration:line-through;text-decoration-color:rgba(255,138,128,.7);text-decoration-thickness:3px}
+.myth{background:${C.ink2};border:2px solid ${C.line};margin-bottom:28px}
+.myth .k{background:${C.soldOutBg};color:${C.soldOut}}
+.myth p{color:${C.muted};text-decoration:line-through;text-decoration-color:${C.soldOut};text-decoration-thickness:3px}
 .fact{background:${C.lime};color:${C.ink}}
 .fact .k{background:${C.ink};color:${C.lime}}
 .comment,.answer{display:flex;gap:26px;align-items:flex-start}
-.comment{background:#1b1c18;border:2px solid #2e3029;border-radius:32px;padding:36px 40px;margin-bottom:28px;margin-right:90px}
+.comment{background:${C.ink2};border:2px solid ${C.line};border-radius:32px;padding:36px 40px;margin-bottom:28px;margin-right:90px}
 .comment b,.answer b{display:block;font:600 24px Inter,sans-serif;margin-bottom:8px;color:${C.muted}}
 .comment p{font:500 44px/1.2 Inter,sans-serif;letter-spacing:-.5px}
 .answer{padding:36px 40px;margin-left:90px;border-radius:32px;background:rgba(206,242,78,.08);border:2px solid rgba(206,242,78,.35)}
 .answer b{color:${C.lime}}
 .answer h1{font-size:64px;letter-spacing:-1.8px}
 .answer p{font-size:30px;line-height:1.4;opacity:.82;margin-top:20px}
-.avatar{flex:none;width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#2e3029;color:${C.text};font:700 32px 'Space Grotesk',sans-serif}
+.avatar{flex:none;width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:${C.line};color:${C.text};font:700 32px 'Space Grotesk',sans-serif}
 .avatar.me{background:${C.lime}}
 .kicker{font:700 34px 'Space Grotesk',sans-serif;margin-bottom:32px;opacity:.75}
 .opts{list-style:none;margin-top:56px;display:grid;gap:18px}
-.opts li{display:flex;align-items:center;gap:24px;background:#1b1c18;border:2px solid #2e3029;border-radius:999px;padding:18px 28px;font:600 36px Inter,sans-serif}
+.opts li{display:flex;align-items:center;gap:24px;background:${C.ink2};border:2px solid ${C.line};border-radius:999px;padding:18px 28px;font:600 36px Inter,sans-serif}
 .opts span{width:52px;height:52px;border-radius:50%;background:${C.lime};color:${C.ink};display:flex;align-items:center;justify-content:center;font:700 26px 'Space Grotesk',sans-serif}
 `;
 

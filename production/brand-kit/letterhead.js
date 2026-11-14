@@ -12,7 +12,10 @@ const LOGOS = path.join(__dirname, "..", "assets", "brand");
 const svgUri = (f) => `data:image/svg+xml;base64,${fs.readFileSync(path.join(LOGOS, f)).toString("base64")}`;
 const LOGO_DARK = svgUri("No-Q_logo_light.svg"); // dark wordmark, for white paper
 
-const C = { ink: "#121212", text: "#2b2d27", muted: "#6b6f63", line: "#e3e5dc", lime: "#cef24e", lime2: "#b8d945" };
+// Print is the Light theme of the NO-Q Design System (brand/tokens.json). Small print text uses
+// ink-muted-strong, which passes 4.5:1 on white; line is the Light hairline.
+const { color } = require("../lib/tokens");
+const C = { ink: color("ink", "light"), text: color("ink", "light"), muted: color("ink-muted-strong", "light"), line: color("line", "light"), lime: color("lime"), lime2: color("lime-hover") };
 
 // Contact details: only what's public on no-q.ca. Change here if you add a phone or street address.
 const CONTACT = ["no-q.ca", "contact@no-q.ca", "Calgary, Alberta"];
