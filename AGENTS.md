@@ -92,3 +92,10 @@ Besides the numbered batches, there's a rolling **Special events** batch for Chr
 - **Muddy crossfades.** Cross-fading two busy screens makes a double exposure. Dip through dark, or take the old content out before the new comes in.
 - **Silent Reels.** Batches 1 and 2 shipped without audio. From batch 3, every Reel has an original `score`, and its `sound` field tells Muse to keep the Reel's own audio.
 - **Apple-only details.** The iPhone Duo's back is white glass with a two-lens camera plateau and **no screen**. The cover display (the other outer face) has a hole-punch camera. See `docs/production.md`.
+
+## Brand kit (letterhead and commentary cards)
+
+`production/brand-kit/` holds evergreen brand pieces. They aren't batch posts and aren't in `feed.json`.
+- **Letterhead:** `node brand-kit/letterhead.js` writes `site/kit/letterhead/`: a blank PDF, a sample letter PDF, an editable Word template (`NO-Q-letterhead.docx`, with the header and footer as images so they repeat on every page) and PNG previews. US Letter, white paper, no bleed. Contact details are only what's public (no-q.ca, contact@no-q.ca, Calgary, Alberta); change `CONTACT` in the script to add more.
+- **Commentary cards:** `node brand-kit/commentary.js [id]` writes 4:5 cards to `site/kit/commentary/`. Types: `take` (struck-through belief, then NO-Q's view), `quote`, `myth` (myth vs fact), `reply` (answering a comment), `hot` (hot take, lime) and `question` (A–D options). Edit `CARDS` to add one. The script warns if text overflows.
+  - Claims must match the verified facts; no invented stats. Quotes are from "The NO-Q team" unless a real person approves their words. Don't show a real commenter's handle without permission.
